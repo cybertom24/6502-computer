@@ -1,0 +1,26 @@
+> No "-port=" argument found
+> No "-action=" argument found
+Options:
+-port = COM5
+-path = C:\Users\savol\Documents\CyberIndustries\Progetti\6502 computer\programmi\letto.txt
+-action = every
+-validate = true
+
+> Opening port...
+> Ready!
+
+
+
+~ Main menu ~
+Select one option: 
+[0] Exit
+[1] Read single
+[2] Read multiple
+[3] Read all
+[4] Write single
+[5] Write multiple
+[6] Write file
+[7] Check writing
+[8] Change path
+[9] Toggle validation
+Insert a valid number[0...9]: 

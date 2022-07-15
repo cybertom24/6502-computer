@@ -1,0 +1,4 @@
+  STX 100
+  STY 200
+  LDX $FE
+  NOP

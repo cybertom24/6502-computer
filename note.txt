@@ -1,0 +1,22 @@
+EEPROM 28C256:
+	256Kb = 32 KB (32K * 8b) di memoria
+	A0...A14 = 15 bit di address
+
+RAM 62256:
+	256Kb = 32 KB (32K * 8b) di memoria statica
+	A0...A14 = 15 bit di address
+
+CPU 6502:
+	A0...A15 = 16 bit di address
+
+TRI-STATE BUFFER 74LS173:
+	4 bit tri-state buffer con D-type flip-flop e ChipEnable
+
+NAND 74*00
+
+In uscita posso usare il 74HC175 che è un 4x D-type flip-flop con il common clock in modo da controllare 4 diversi led o tramite un BCD-7 segment decoder un display a 7 segmenti
+Ho a disposizione anche un 74HC73 (2x J-K flip-flop) che posso trasformare in D-type e un 74HC74 (2x D-type flip-flop) per poter controllare altri 4bit in uscita.
+Combinando il tutto ho a dispozione un byte in uscita (8 pin quindi) che sono in bi-state (niente HIGH-Z)
+
+Il 6502 ha bisogno che i primi 512 Bytes siano gestiti dalla RAM poichè sono quelli destinati allo stack, questo vuol dire che gli address
+dallo 0x0000 al 0x01FF siano per forza della RAM, questo obbliga a porre la RAM come prima nella lista degli indirizzi e la ROM a seguire.

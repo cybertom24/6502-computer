@@ -1,0 +1,13 @@
+Per compilare utilizzare il programma "vasm6502_oldstyle.exe" presente al percorso C:\Users\savol\Documents\CyberIndustries\Programmi\vasm
+Aggiungere l'opzione -Fbin per poter ottenere il file binario da caricare nella ROM
+Aggiungere l'opzione -o <file output> per indicare il nome e la cartella del file che verrà generato
+Inserire il pecorso del file da compilare
+
+Il comando sarà quindi:
+C:\Users\savol\Documents\CyberIndustries\Programmi\vasm\vasm6502_oldstyle.exe -Fbin -o OUTPUT_PATH INPUT_PATH
+
+Tramite make è possibile generare velocemente file binari da inserire all'interno della ROM:
+basta usare da cmd il comando
+make FILE=<nome file>
+per generare un file di tipo .bin con lo stesso nome del file passato
+	!!	ATTENZIONE: il <nome file> passato NON deve contenere .asm	!! 

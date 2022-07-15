@@ -1,0 +1,87 @@
+Come ROM ho scelto la EEPROM DQ28C256.
+Ha una capacità di 256kbit e organizzati in 32kB.
+Gli address sono quindi formati da 15 bit che devono essere posti sui pin A0...A14
+
+Vcc = +5v
+
+Disposizione pin:
+	Alimentazione:
+	Vcc = 28
+	GND = 14
+
+	Address:
+	A0 = 10
+	A1 = 9
+	A2 = 8
+	A3 = 7
+	A4 = 6
+	A5 = 5
+	A6 = 4
+	A7 = 3
+	A8 = 25
+	A9 = 24
+	A10 = 21
+	A11 = 23
+	A12 = 2
+	A13 = 26
+	A14 = 1
+
+	I/O:
+	IO0 = 11
+	IO1 = 12
+	IO2 = 13
+	IO3 = 15
+	IO4 = 16
+	IO5 = 17
+	IO6 = 18
+	IO7 = 19
+
+	Utility:
+	_CE = 20 (ChipEnable attivo basso)
+	_OE = 22 (OutputEnable attivo basso)
+	_WE = 27 (WriteEnable attivo basso)
+
+Modalità di operazione:
+(low = pin connesso a GND, high = pin connesso a Vcc, X = non importa, Vh = tensione per la cancellatura (+12v))
+		_CE	_OE	_WE	I/O	
+Read:		low	low	high	Data out
+Standby:	high	X	X	High impedeance
+Write:		low	high	low	Data in
+
+Write		X	X	high	High impedeance / Data out
+Inhibit:	X	low	X	High impedeance / Data out
+
+Chip erase:	low	Vh	low	niente		
+
+Descrizione operazioni:
+
+- READ
+	1) _CE e _OE a HIGH
+	2) Poni sugli address l'indirizzo che vuoi leggere
+	3) Mantieni _WE a HIGH per tutta la durata dell'operazione
+	4) Porta _CE a LOW
+	5) Porta _OE a LOW
+	6) Leggi il Byte sugli I/O
+
+- BYTE WRITE
+	Questa modalità serve a scrivere un unico byte all'interno della memoria. È possibile infatti scrivere più byte assieme (fino a 64) ma quello
+	è spiegato nella modalità apposita.
+	1) _OE e _WE a HIGH
+	2) _CE a LOW
+	3) Poni sugli address pin l'indirizzo su cui vuoi scrivere
+	4) Porta _WE a LOW (questo fissa gli address nei latch)
+	5) Poni sugli I/O pin il byte da salvare
+	6) Porta _WE a HIGH (questo fissa il dato nei latch e comincia la sessione di scrittura)
+	7) Aspetta Twc (Write Cycle Time = 10ms)
+	8) Fine
+
+- PAGE WRITE
+	Una modalità più sofisticata per salvare i dati. La memoria è divisa in "page" lunghe 64 byte.
+	Ogni "page" è definita dagli ultimi 9 bit dell'address (A6...A14). I bit A0...A5 indicano la posizione all'interno della page.
+	Per scriverci all'interno bisogna specificare la pagina con i bit superiori e indicare la posizione in cui scrivere con i restanti 6.
+	Successivamente basta scrivere ogni dato allo stesso modo del BYTE WRITE ma ad intervalli minori di 150us.
+	Scaduti i 150us la scrittura inizierà automaticamente.
+	IMPORTANTE: Durante una page write non è possibile cambiare pagina!!
+
+	
+	
