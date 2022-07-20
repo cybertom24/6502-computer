@@ -1,0 +1,14 @@
+ .ORG $8000
+ 
+start:
+ LDX #-1		; Resetta X
+ 
+loop:
+ INX			; Incrementa X
+ STX out		; Poni il dato contenuto in X nell'address "out"
+ JMP loop		; Torna su
+
+mess:
+ .byte "ciao bel'om", 0
+ 
+out = $4000		; Primo indirizzo delle periferiche

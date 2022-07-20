@@ -1,0 +1,18 @@
+  .org $8000
+  
+start:  
+  LDX #-1		; Resetta X
+
+loop:
+  INX			; Incrementa X
+  LDA messaggio, X	; Carica in A il dato contenuto in "messaggio" + X
+  CMP #0		; Confronta A con 0
+  BNE loop		; Torna su se non è uguale a 0
+
+end:
+  BRK			; Fine 
+
+
+; --- COSTANTI ---
+messaggio:
+  .byte "ciao come va?", 0

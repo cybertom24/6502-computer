@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ROMImage:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ROMImage_jar</output-path>
+    <root id="archive" name="ROMImage.jar">
+      <element id="module-output" name="ROMImage" />
+    </root>
+  </artifact>
+</component>

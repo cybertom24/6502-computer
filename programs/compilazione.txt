@@ -10,4 +10,7 @@ Tramite make è possibile generare velocemente file binari da inserire all'inter
 basta usare da cmd il comando
 make FILE=<nome file>
 per generare un file di tipo .bin con lo stesso nome del file passato
-	!!	ATTENZIONE: il <nome file> passato NON deve contenere .asm	!! 
+	!!	ATTENZIONE: il <nome file> passato NON deve contenere .asm	!!
+
+Per generare l'image della ROM usare
+	make image FILE=<nome file senza .65b> START=<address di start>
