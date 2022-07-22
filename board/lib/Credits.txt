@@ -1,0 +1,1 @@
+atmel-custom from https://github.com/jpwright/eagle-lbr.git
