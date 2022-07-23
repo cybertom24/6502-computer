@@ -13303,6 +13303,7 @@ high speed (Philips)</description>
 <pinref part="U$1" gate="VIA" pin="D7"/>
 <wire x1="406.4" y1="38.1" x2="421.64" y2="38.1" width="0.1524" layer="91"/>
 <wire x1="421.64" y1="38.1" x2="424.18" y2="40.64" width="0.1524" layer="91"/>
+<label x="406.4" y="38.1" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="D6" class="0">
@@ -13329,6 +13330,7 @@ high speed (Philips)</description>
 <pinref part="U$1" gate="VIA" pin="D6"/>
 <wire x1="406.4" y1="40.64" x2="421.64" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="421.64" y1="40.64" x2="424.18" y2="43.18" width="0.1524" layer="91"/>
+<label x="406.4" y="40.64" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="D5" class="0">
@@ -13355,6 +13357,7 @@ high speed (Philips)</description>
 <pinref part="U$1" gate="VIA" pin="D5"/>
 <wire x1="406.4" y1="43.18" x2="421.64" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="421.64" y1="43.18" x2="424.18" y2="45.72" width="0.1524" layer="91"/>
+<label x="406.4" y="43.18" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="D4" class="0">
@@ -13381,6 +13384,7 @@ high speed (Philips)</description>
 <pinref part="U$1" gate="VIA" pin="D4"/>
 <wire x1="406.4" y1="45.72" x2="421.64" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="421.64" y1="45.72" x2="424.18" y2="48.26" width="0.1524" layer="91"/>
+<label x="406.4" y="45.72" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="D3" class="0">
@@ -13407,6 +13411,7 @@ high speed (Philips)</description>
 <pinref part="U$1" gate="VIA" pin="D3"/>
 <wire x1="406.4" y1="48.26" x2="421.64" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="421.64" y1="48.26" x2="424.18" y2="50.8" width="0.1524" layer="91"/>
+<label x="406.4" y="48.26" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="D2" class="0">
@@ -13433,6 +13438,7 @@ high speed (Philips)</description>
 <pinref part="U$1" gate="VIA" pin="D2"/>
 <wire x1="406.4" y1="50.8" x2="421.64" y2="50.8" width="0.1524" layer="91"/>
 <wire x1="421.64" y1="50.8" x2="424.18" y2="53.34" width="0.1524" layer="91"/>
+<label x="406.4" y="50.8" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="D1" class="0">
@@ -13459,6 +13465,7 @@ high speed (Philips)</description>
 <pinref part="U$1" gate="VIA" pin="D1"/>
 <wire x1="406.4" y1="53.34" x2="421.64" y2="53.34" width="0.1524" layer="91"/>
 <wire x1="421.64" y1="53.34" x2="424.18" y2="55.88" width="0.1524" layer="91"/>
+<label x="406.4" y="53.34" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="D0" class="0">
@@ -13485,6 +13492,7 @@ high speed (Philips)</description>
 <pinref part="U$1" gate="VIA" pin="D0"/>
 <wire x1="406.4" y1="55.88" x2="421.64" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="421.64" y1="55.88" x2="424.18" y2="58.42" width="0.1524" layer="91"/>
+<label x="406.4" y="55.88" size="1.27" layer="95"/>
 </segment>
 </net>
 <net name="A0" class="0">

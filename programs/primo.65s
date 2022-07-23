@@ -1,0 +1,14 @@
+; --- PRIMO TEST DEL COMPUTER ---
+; Il programma dovrebbe salvare nella posizione $1000 il dato $FA
+ .ORG $8000
+ 
+start:
+ LDX #data		; Carica in X il valore $FA
+ STX address		; Salva X nella posizione $1000
+ JMP start		; Torna all'inizio
+ 	
+; --- COSTANTI ---
+address = $1000
+data = $FA
+ 
+ 
