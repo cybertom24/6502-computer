@@ -12465,6 +12465,7 @@ high speed (Philips)</description>
 <part name="P+12" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="GND15" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="P+13" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
+<part name="GND16" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -12892,6 +12893,9 @@ high speed (Philips)</description>
 <instance part="P+13" gate="VCC" x="421.64" y="68.58" smashed="yes">
 <attribute name="VALUE" x="419.1" y="66.04" size="1.778" layer="96" rot="R90"/>
 </instance>
+<instance part="GND16" gate="1" x="340.36" y="45.72" smashed="yes">
+<attribute name="VALUE" x="337.82" y="43.18" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 <bus name="D0,D1,D2,D3,D4,D5,D6,D7">
@@ -13208,6 +13212,12 @@ high speed (Philips)</description>
 <segment>
 <pinref part="U$1" gate="VIAP" pin="VSS"/>
 <pinref part="GND15" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="IC7-ROM" gate="G$1" pin="/OE"/>
+<wire x1="330.2" y1="50.8" x2="340.36" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="340.36" y1="50.8" x2="340.36" y2="48.26" width="0.1524" layer="91"/>
+<pinref part="GND16" gate="1" pin="GND"/>
 </segment>
 </net>
 <net name="RES*" class="0">
@@ -14234,9 +14244,9 @@ high speed (Philips)</description>
 <label x="167.64" y="-20.32" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="IC7-ROM" gate="G$1" pin="/OE"/>
-<wire x1="330.2" y1="50.8" x2="332.74" y2="50.8" width="0.1524" layer="91"/>
-<label x="332.74" y="50.8" size="1.27" layer="95" xref="yes"/>
+<label x="332.74" y="48.26" size="1.27" layer="95" xref="yes"/>
+<pinref part="IC7-ROM" gate="G$1" pin="/CE"/>
+<wire x1="332.74" y1="48.26" x2="330.2" y2="48.26" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="CLOCK*" class="0">
@@ -14244,11 +14254,6 @@ high speed (Philips)</description>
 <pinref part="IC7" gate="B" pin="O"/>
 <wire x1="185.42" y1="7.62" x2="187.96" y2="7.62" width="0.1524" layer="91"/>
 <label x="187.96" y="7.62" size="1.27" layer="95" xref="yes"/>
-</segment>
-<segment>
-<pinref part="IC7-ROM" gate="G$1" pin="/CE"/>
-<wire x1="330.2" y1="48.26" x2="332.74" y2="48.26" width="0.1524" layer="91"/>
-<label x="332.74" y="48.26" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <pinref part="D2" gate="G$1" pin="A"/>

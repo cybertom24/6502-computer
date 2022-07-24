@@ -20,3 +20,5 @@ Combinando il tutto ho a dispozione un byte in uscita (8 pin quindi) che sono in
 
 Il 6502 ha bisogno che i primi 512 Bytes siano gestiti dalla RAM poichè sono quelli destinati allo stack, questo vuol dire che gli address
 dallo 0x0000 al 0x01FF siano per forza della RAM, questo obbliga a porre la RAM come prima nella lista degli indirizzi e la ROM a seguire.
+
+Il 65C02 (specialmente quello della Rockwell) può essere fermato mantenendo il CLOCK HIGH e non LOW, poichè l'impulso basso può essere MAX di 5us!
