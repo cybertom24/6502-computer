@@ -1,14 +1,19 @@
+; --- Contatore ---
+; Questo programma continua a contare, partendo da 0 a quando non va in overflow
+; e continuando così
+
+; COSTANTI
+out = $1000		; Primo indirizzo delle periferiche
+
  .ORG $8000
  
-start:
+reset:
  LDX #-1		; Resetta X
  
 loop:
  INX			; Incrementa X
  STX out		; Poni il dato contenuto in X nell'address "out"
+ TXA			; Copia X in A
+ CMP #9			; Confronta A e il numero 9
+ BCS reset		; Salta se A >= 9
  JMP loop		; Torna su
-
-mess:
- .byte "ciao bel'om", 0
- 
-out = $4000		; Primo indirizzo delle periferiche
