@@ -15170,14 +15170,14 @@ Source: tuxgr_12x2_r2.pdf</description>
 <attribute name="PART" x="389.255" y="80.645" size="1.778" layer="95"/>
 <attribute name="VALUE" x="386.715" y="19.05" size="1.778" layer="96"/>
 </instance>
-<instance part="IC9-PERIPHERALS" gate="VIAP" x="370.84" y="88.9" smashed="yes">
-<attribute name="PART" x="370.205" y="88.265" size="1.778" layer="95"/>
+<instance part="IC9-PERIPHERALS" gate="VIAP" x="368.3" y="88.9" smashed="yes">
+<attribute name="PART" x="367.665" y="88.265" size="1.778" layer="95"/>
 </instance>
-<instance part="P+12" gate="VCC" x="370.84" y="99.06" smashed="yes">
-<attribute name="VALUE" x="368.3" y="96.52" size="1.778" layer="96" rot="R90"/>
+<instance part="P+12" gate="VCC" x="368.3" y="99.06" smashed="yes">
+<attribute name="VALUE" x="365.76" y="96.52" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="GND15" gate="1" x="370.84" y="78.74" smashed="yes">
-<attribute name="VALUE" x="368.3" y="76.2" size="1.778" layer="96"/>
+<instance part="GND15" gate="1" x="368.3" y="78.74" smashed="yes">
+<attribute name="VALUE" x="365.76" y="76.2" size="1.778" layer="96"/>
 </instance>
 <instance part="GND16" gate="1" x="340.36" y="45.72" smashed="yes">
 <attribute name="VALUE" x="337.82" y="43.18" size="1.778" layer="96"/>
@@ -16798,11 +16798,6 @@ Source: tuxgr_12x2_r2.pdf</description>
 <wire x1="223.52" y1="35.56" x2="220.98" y2="35.56" width="0.1524" layer="91"/>
 <label x="220.98" y="35.56" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
-<segment>
-<pinref part="DIS1" gate="G$1" pin="R/W"/>
-<wire x1="454.66" y1="68.58" x2="452.12" y2="68.58" width="0.1524" layer="91"/>
-<label x="452.12" y="68.58" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
 </net>
 <net name="PB0" class="0">
 <segment>
@@ -16913,12 +16908,22 @@ Source: tuxgr_12x2_r2.pdf</description>
 <wire x1="454.66" y1="45.72" x2="452.12" y2="45.72" width="0.1524" layer="91"/>
 <label x="452.12" y="45.72" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
+<segment>
+<pinref part="IC9-PERIPHERALS" gate="VIA" pin="PA7"/>
+<wire x1="381" y1="58.42" x2="378.46" y2="58.42" width="0.1524" layer="91"/>
+<label x="378.46" y="58.42" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
 </net>
 <net name="PA6" class="0">
 <segment>
 <pinref part="DIS1" gate="G$1" pin="D6"/>
 <wire x1="454.66" y1="48.26" x2="452.12" y2="48.26" width="0.1524" layer="91"/>
 <label x="452.12" y="48.26" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<pinref part="IC9-PERIPHERALS" gate="VIA" pin="PA6"/>
+<wire x1="381" y1="60.96" x2="378.46" y2="60.96" width="0.1524" layer="91"/>
+<label x="378.46" y="60.96" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="PA5" class="0">
@@ -16927,6 +16932,11 @@ Source: tuxgr_12x2_r2.pdf</description>
 <wire x1="454.66" y1="50.8" x2="452.12" y2="50.8" width="0.1524" layer="91"/>
 <label x="452.12" y="50.8" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
+<segment>
+<pinref part="IC9-PERIPHERALS" gate="VIA" pin="PA5"/>
+<wire x1="381" y1="63.5" x2="378.46" y2="63.5" width="0.1524" layer="91"/>
+<label x="378.46" y="63.5" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
 </net>
 <net name="PA4" class="0">
 <segment>
@@ -16934,12 +16944,22 @@ Source: tuxgr_12x2_r2.pdf</description>
 <wire x1="454.66" y1="53.34" x2="452.12" y2="53.34" width="0.1524" layer="91"/>
 <label x="452.12" y="53.34" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
+<segment>
+<pinref part="IC9-PERIPHERALS" gate="VIA" pin="PA4"/>
+<wire x1="381" y1="66.04" x2="378.46" y2="66.04" width="0.1524" layer="91"/>
+<label x="378.46" y="66.04" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
 </net>
 <net name="PA1" class="0">
 <segment>
-<pinref part="DIS1" gate="G$1" pin="E"/>
-<wire x1="454.66" y1="66.04" x2="452.12" y2="66.04" width="0.1524" layer="91"/>
-<label x="452.12" y="66.04" size="1.27" layer="95" rot="R180" xref="yes"/>
+<pinref part="IC9-PERIPHERALS" gate="VIA" pin="PA1"/>
+<wire x1="381" y1="73.66" x2="378.46" y2="73.66" width="0.1524" layer="91"/>
+<label x="378.46" y="73.66" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<pinref part="DIS1" gate="G$1" pin="R/W"/>
+<wire x1="454.66" y1="68.58" x2="452.12" y2="68.58" width="0.1524" layer="91"/>
+<label x="452.12" y="68.58" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="PA0" class="0">
@@ -16948,12 +16968,36 @@ Source: tuxgr_12x2_r2.pdf</description>
 <wire x1="454.66" y1="71.12" x2="452.12" y2="71.12" width="0.1524" layer="91"/>
 <label x="452.12" y="71.12" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
+<segment>
+<pinref part="IC9-PERIPHERALS" gate="VIA" pin="PA0"/>
+<wire x1="381" y1="76.2" x2="378.46" y2="76.2" width="0.1524" layer="91"/>
+<label x="378.46" y="76.2" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
 </net>
 <net name="N$66" class="0">
 <segment>
 <pinref part="DIS1" gate="G$1" pin="CONTR"/>
 <pinref part="R38" gate="G$1" pin="S"/>
 <wire x1="454.66" y1="73.66" x2="441.96" y2="73.66" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="PA2" class="0">
+<segment>
+<pinref part="IC9-PERIPHERALS" gate="VIA" pin="PA2"/>
+<wire x1="381" y1="71.12" x2="378.46" y2="71.12" width="0.1524" layer="91"/>
+<label x="378.46" y="71.12" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<pinref part="DIS1" gate="G$1" pin="E"/>
+<wire x1="454.66" y1="66.04" x2="452.12" y2="66.04" width="0.1524" layer="91"/>
+<label x="452.12" y="66.04" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="PA3" class="0">
+<segment>
+<pinref part="IC9-PERIPHERALS" gate="VIA" pin="PA3"/>
+<wire x1="381" y1="68.58" x2="378.46" y2="68.58" width="0.1524" layer="91"/>
+<label x="378.46" y="68.58" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 </nets>

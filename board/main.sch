@@ -14751,7 +14751,6 @@ Source: tuxgr_12x2_r2.pdf</description>
 <part name="GND21" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="P+13" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="R38" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-TRIMM" device="64W" package3d_urn="urn:adsk.eagle:package:23748/1" value="10kΩ"/>
-<part name="P+18" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="GND22" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 </parts>
 <sheets>
@@ -15256,11 +15255,8 @@ Source: tuxgr_12x2_r2.pdf</description>
 <attribute name="NAME" x="430.911" y="69.85" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="433.07" y="69.85" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="P+18" gate="VCC" x="441.96" y="48.26" smashed="yes">
-<attribute name="VALUE" x="439.42" y="45.72" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="GND22" gate="1" x="441.96" y="35.56" smashed="yes">
-<attribute name="VALUE" x="439.42" y="33.02" size="1.778" layer="96"/>
+<instance part="GND22" gate="1" x="452.12" y="35.56" smashed="yes">
+<attribute name="VALUE" x="449.58" y="33.02" size="1.778" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -15521,12 +15517,6 @@ Source: tuxgr_12x2_r2.pdf</description>
 <wire x1="454.66" y1="76.2" x2="447.04" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="76.2" x2="447.04" y2="86.36" width="0.1524" layer="91"/>
 </segment>
-<segment>
-<pinref part="P+18" gate="VCC" pin="VCC"/>
-<wire x1="441.96" y1="45.72" x2="441.96" y2="43.18" width="0.1524" layer="91"/>
-<pinref part="DIS1" gate="G$1" pin="NC@1"/>
-<wire x1="441.96" y1="43.18" x2="454.66" y2="43.18" width="0.1524" layer="91"/>
-</segment>
 </net>
 <net name="GND" class="0">
 <segment>
@@ -15642,10 +15632,10 @@ Source: tuxgr_12x2_r2.pdf</description>
 <junction x="436.88" y="66.04"/>
 </segment>
 <segment>
-<pinref part="DIS1" gate="G$1" pin="NC@2"/>
-<wire x1="454.66" y1="40.64" x2="441.96" y2="40.64" width="0.1524" layer="91"/>
 <pinref part="GND22" gate="1" pin="GND"/>
-<wire x1="441.96" y1="40.64" x2="441.96" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="452.12" y1="40.64" x2="452.12" y2="38.1" width="0.1524" layer="91"/>
+<pinref part="DIS1" gate="G$1" pin="NC@2"/>
+<wire x1="454.66" y1="40.64" x2="452.12" y2="40.64" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="RES*" class="0">
@@ -16993,6 +16983,11 @@ Source: tuxgr_12x2_r2.pdf</description>
 <pinref part="IC9-PERIPHERALS" gate="VIA" pin="PA3"/>
 <wire x1="381" y1="68.58" x2="378.46" y2="68.58" width="0.1524" layer="91"/>
 <label x="378.46" y="68.58" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<pinref part="DIS1" gate="G$1" pin="NC@1"/>
+<wire x1="454.66" y1="43.18" x2="452.12" y2="43.18" width="0.1524" layer="91"/>
+<label x="452.12" y="43.18" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 </nets>

@@ -1,26 +1,12 @@
 ; --- 6522 Test ---
 ; This program is used to test the 6522 chip
 
-; Costants
-addr_6522 = $4000
-PB_6522 	= addr_6522 + 0
-PA_6522 	= addr_6522 + 1
-DDRB_6522 	= addr_6522 + 2
-DDRA_6522 	= addr_6522 + 3
-T1C_L_6522 	= addr_6522 + 4
-T1C_H_6522 	= addr_6522 + 5
-T1L_L_6522 	= addr_6522 + 6
-T1L_H_6522 	= addr_6522 + 7
-T2C_L_6522 	= addr_6522 + 8
-T2C_H_6522 	= addr_6522 + 9
-SR_6522		= addr_6522 + 10
-ACR_6522	= addr_6522 + 11
-PCR_6522	= addr_6522 + 12
-IFR_6522	= addr_6522 + 13
-IER_6522	= addr_6522 + 14
-PA_2_6522	= addr_6522 + 15
+delay_A = $FF
+delay_Y = $FF
 
- .ORG $8000
+ .INCLUDE ".\util\costants.65s"
+
+ .ORG ROM_start
  
 start:
  LDX #@11111111		; Set the DD of PORT_A (1 = output, 0 = innput)
@@ -28,7 +14,15 @@ start:
 
 loop: 
  LDX #@10101010		; Set the status of PORT_A
- STX PA_6522		; Update PORT_A
+ STX PA_6522		; Update PORT_A 
  LDX #@01010101		; Set the status of PORT_A
  STX PA_6522		; Update PORT_A
  JMP loop
+
+
+
+
+fill_with_nop: 
+ .REPEAT ROM_end - fill_with_nop + 1;
+ NOP
+ .ENDR

@@ -1,0 +1,49 @@
+; --- 6522 Sequence ---
+; This program displays a funny sequence on 5 led wired to a 6522
+
+ .INCLUDE ".\util\costants.65s"
+ 
+ .ORG ROM_start
+
+max = 15
+
+start:
+ LDX #@11111111
+ STX DDRA_6522
+
+reset:
+ LDY #0			; Set the Y register to 0
+ LDX sequence, Y 	; Get the first state of the sequence (Y is used as offset)
+ STX PA_6522
+
+loop:
+ INY			; Increment Y
+ TYA			; A = Y
+ CMP #max		; Compare A (which contains Y) with max
+ BCS reset		; Branch if carry set (A >= max)
+ LDX sequence, Y
+ STX PA_6522
+ JMP loop
+
+sequence:
+ .DB @10000000
+ .DB @01000000
+ .DB @00100000
+ .DB @00010000
+ .DB @00001000
+ .DB @00010000
+ .DB @00100000
+ .DB @01000000
+ .DB @10000000
+ .DB @10001000
+ .DB @11011000
+ .DB @11111000
+ .DB @01110000
+ .DB @00100000
+ .DB @00000000
+
+
+fill_with_nop: 
+ .REPEAT ROM_end - fill_with_nop + 1;
+ NOP
+ .ENDR
