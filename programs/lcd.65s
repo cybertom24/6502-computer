@@ -49,7 +49,7 @@ LCD_init:
 
  LDX #@00011100		; LED, D4 and D5
  TXA			; Copy A into X
- ORA LCD_E		; Set E to 1
+ ORA #LCD_E		; Set E to 1
  STX PA_6522		; Data set but E = 0
  STA PA_6522		; Data set but E = 1
  STX PA_6522		; Data set but E = 0
@@ -76,7 +76,7 @@ LCD_init:
  
  LDX #@00010100		; LED, D5
  TXA
- ORA LCD_E
+ ORA #LCD_E
  STX PA_6522		; Data set but E = 0
  STA PA_6522		; Data set but E = 1
  STX PA_6522		; Data set but E = 0
@@ -87,49 +87,52 @@ LCD_init:
  
  LDX #@00010001		; LED, N = 1 (at D7), F = 0 (at D6)
  TXA
- ORA LCD_E
+ ORA #LCD_E
  STX PA_6522		; Data set but E = 0
  STA PA_6522		; Data set but E = 1
  STX PA_6522		; Data set but E = 0
  
  LDX #@00010000		; LED
  TXA
- ORA LCD_E
+ ORA #LCD_E
  STX PA_6522		; Data set but E = 0
  STA PA_6522		; Data set but E = 1
  STX PA_6522		; Data set but E = 0
  
  LDX #@00010001		; LED, D7
  TXA
- ORA LCD_E
+ ORA #LCD_E
  STX PA_6522		; Data set but E = 0
  STA PA_6522		; Data set but E = 1
  STX PA_6522		; Data set but E = 0
  
  LDX #@00010000		; LED
  TXA
- ORA LCD_E
+ ORA #LCD_E
  STX PA_6522		; Data set but E = 0
  STA PA_6522		; Data set but E = 1
  STX PA_6522		; Data set but E = 0
  
  LDX #@00011000		; LED, D4
  TXA
- ORA LCD_E
+ ORA #LCD_E
  STX PA_6522		; Data set but E = 0
  STA PA_6522		; Data set but E = 1
  STX PA_6522		; Data set but E = 0
  
  LDX #@00010000		; LED
  TXA
- ORA LCD_E
+ ORA #LCD_E
  STX PA_6522		; Data set but E = 0
  STA PA_6522		; Data set but E = 1
  STX PA_6522		; Data set but E = 0
  
  LDX #@00011110		; LED, S = 1 (at D4), I/D = 1 (at D5), D6 
  TXA
- ORA LCD_E
+ ORA #LCD_E
  STX PA_6522		; Data set but E = 0
  STA PA_6522		; Data set but E = 1
  STX PA_6522		; Data set but E = 0
+ 
+here:
+ JMP here

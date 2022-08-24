@@ -4,6 +4,8 @@ IMAGEMAKER=../script/ROMImage/out/artifacts/ROMImage_jar/ROMImage.jar
 LOADER=eeprom
 LOPTION=-path="$(CURDIR)/$(FILE).bin" -action=write
 
+START=32768
+
 # Make ROM image and load
 il: image load
 
