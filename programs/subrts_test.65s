@@ -1,0 +1,21 @@
+; --- SUBROUTINES TEST ---
+; This program is used to test if JSR (Jump to SubRoutine) and the following RTS (Return from SubRoutine) commands work
+
+ .INCLUDE "./util/costants.65s"
+ 
+ .ORG ROM_start
+  
+
+start:
+ JSR subroutine
+here:
+ LDA #$FA
+ JMP start
+ 
+
+
+ .ORG ROM_start + $100
+subroutine:
+ NOP
+ NOP
+ RTS

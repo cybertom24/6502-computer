@@ -1,0 +1,16 @@
+; --- RAM TEST ---
+; This program is used to test the RAM
+
+ .INCLUDE ".\util\costants.65s"
+ 
+ .ORG ROM_start
+ 
+start:
+ LDX #$A4		; Load in X the value 10100100 (= 0xA4)
+ STX $1000		; Save X in address 0x1000 (inside the RAM)
+ LDA $1000
+ STA $1001
+ 
+here:
+ JMP here
+ 

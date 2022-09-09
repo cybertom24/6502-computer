@@ -14715,7 +14715,7 @@ Source: tuxgr_12x2_r2.pdf</description>
 <part name="GND12" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="D1" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="1N4148" device="DO35-7" package3d_urn="urn:adsk.eagle:package:43339/2"/>
 <part name="D2" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="1N4148" device="DO35-7" package3d_urn="urn:adsk.eagle:package:43339/2"/>
-<part name="R32" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="220kΩ"/>
+<part name="R32" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="10kΩ"/>
 <part name="GND13" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND14" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="P+9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
@@ -14740,7 +14740,7 @@ Source: tuxgr_12x2_r2.pdf</description>
 <part name="D4" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="1N4148" device="DO35-7" package3d_urn="urn:adsk.eagle:package:43339/2"/>
 <part name="P+15" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="P+16" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
-<part name="C4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="050-025X075" package3d_urn="urn:adsk.eagle:package:23637/1" value="10nF"/>
+<part name="C4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="050-025X075" package3d_urn="urn:adsk.eagle:package:23637/1" value="10uF"/>
 <part name="GND19" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="R36" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="2.2kΩ"/>
 <part name="S2" library="switch-omron" library_urn="urn:adsk.eagle:library:377" deviceset="10-XX" device="" package3d_urn="urn:adsk.eagle:package:27496/1"/>
@@ -14752,6 +14752,16 @@ Source: tuxgr_12x2_r2.pdf</description>
 <part name="P+13" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="R38" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-TRIMM" device="64W" package3d_urn="urn:adsk.eagle:package:23748/1" value="10kΩ"/>
 <part name="GND22" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="R39" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="1kΩ"/>
+<part name="Q2" library="transistor-pnp" library_urn="urn:adsk.eagle:library:399" deviceset="BC327" device="" package3d_urn="urn:adsk.eagle:package:29211/2"/>
+<part name="P+18" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
+<part name="R40" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="10kΩ"/>
+<part name="GND23" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="Q3" library="transistor-pnp" library_urn="urn:adsk.eagle:library:399" deviceset="BC327" device="" package3d_urn="urn:adsk.eagle:package:29211/2"/>
+<part name="R41" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="1kΩ"/>
+<part name="P+19" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
+<part name="R42" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="0207/10" package3d_urn="urn:adsk.eagle:package:23491/2" value="10kΩ"/>
+<part name="GND24" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -15115,20 +15125,20 @@ Source: tuxgr_12x2_r2.pdf</description>
 <instance part="GND12" gate="1" x="287.02" y="25.4" smashed="yes">
 <attribute name="VALUE" x="284.48" y="22.86" size="1.778" layer="96"/>
 </instance>
-<instance part="D1" gate="G$1" x="213.36" y="25.4" smashed="yes">
-<attribute name="NAME" x="215.9" y="25.8826" size="1.778" layer="95"/>
-<attribute name="VALUE" x="215.9" y="23.0886" size="1.778" layer="96"/>
+<instance part="D1" gate="G$1" x="213.36" y="-15.24" smashed="yes">
+<attribute name="NAME" x="215.9" y="-14.7574" size="1.778" layer="95"/>
+<attribute name="VALUE" x="215.9" y="-17.5514" size="1.778" layer="96"/>
 </instance>
-<instance part="D2" gate="G$1" x="213.36" y="20.32" smashed="yes">
-<attribute name="NAME" x="215.9" y="20.8026" size="1.778" layer="95"/>
-<attribute name="VALUE" x="215.9" y="18.0086" size="1.778" layer="96"/>
+<instance part="D2" gate="G$1" x="213.36" y="-20.32" smashed="yes">
+<attribute name="NAME" x="215.9" y="-19.8374" size="1.778" layer="95"/>
+<attribute name="VALUE" x="215.9" y="-22.6314" size="1.778" layer="96"/>
 </instance>
-<instance part="R32" gate="G$1" x="220.98" y="12.7" smashed="yes" rot="R270">
-<attribute name="NAME" x="222.4786" y="16.51" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="217.678" y="16.51" size="1.778" layer="96" rot="R270"/>
+<instance part="R32" gate="G$1" x="220.98" y="-27.94" smashed="yes" rot="R270">
+<attribute name="NAME" x="222.4786" y="-24.13" size="1.778" layer="95" rot="R270"/>
+<attribute name="VALUE" x="217.678" y="-24.13" size="1.778" layer="96" rot="R270"/>
 </instance>
-<instance part="GND13" gate="1" x="220.98" y="5.08" smashed="yes">
-<attribute name="VALUE" x="218.44" y="2.54" size="1.778" layer="96"/>
+<instance part="GND13" gate="1" x="220.98" y="-35.56" smashed="yes">
+<attribute name="VALUE" x="218.44" y="-38.1" size="1.778" layer="96"/>
 </instance>
 <instance part="IC7" gate="P" x="177.8" y="40.64" smashed="yes">
 <attribute name="NAME" x="177.165" y="40.005" size="1.778" layer="95"/>
@@ -15257,6 +15267,42 @@ Source: tuxgr_12x2_r2.pdf</description>
 </instance>
 <instance part="GND22" gate="1" x="452.12" y="35.56" smashed="yes">
 <attribute name="VALUE" x="449.58" y="33.02" size="1.778" layer="96"/>
+</instance>
+<instance part="R39" gate="G$1" x="228.6" y="-20.32" smashed="yes">
+<attribute name="NAME" x="224.79" y="-18.8214" size="1.778" layer="95"/>
+<attribute name="VALUE" x="224.79" y="-23.622" size="1.778" layer="96"/>
+</instance>
+<instance part="Q2" gate="G$1" x="236.22" y="-20.32" smashed="yes">
+<attribute name="NAME" x="226.06" y="-12.7" size="1.778" layer="95"/>
+<attribute name="VALUE" x="226.06" y="-15.24" size="1.778" layer="96"/>
+</instance>
+<instance part="P+18" gate="VCC" x="238.76" y="-12.7" smashed="yes">
+<attribute name="VALUE" x="236.22" y="-15.24" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="R40" gate="G$1" x="238.76" y="-35.56" smashed="yes" rot="R270">
+<attribute name="NAME" x="240.2586" y="-31.75" size="1.778" layer="95" rot="R270"/>
+<attribute name="VALUE" x="235.458" y="-31.75" size="1.778" layer="96" rot="R270"/>
+</instance>
+<instance part="GND23" gate="1" x="238.76" y="-43.18" smashed="yes">
+<attribute name="VALUE" x="236.22" y="-45.72" size="1.778" layer="96"/>
+</instance>
+<instance part="Q3" gate="G$1" x="254" y="-27.94" smashed="yes">
+<attribute name="NAME" x="243.84" y="-20.32" size="1.778" layer="95"/>
+<attribute name="VALUE" x="243.84" y="-22.86" size="1.778" layer="96"/>
+</instance>
+<instance part="R41" gate="G$1" x="246.38" y="-27.94" smashed="yes">
+<attribute name="NAME" x="242.57" y="-26.4414" size="1.778" layer="95"/>
+<attribute name="VALUE" x="242.57" y="-31.242" size="1.778" layer="96"/>
+</instance>
+<instance part="P+19" gate="VCC" x="256.54" y="-20.32" smashed="yes">
+<attribute name="VALUE" x="254" y="-22.86" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="R42" gate="G$1" x="256.54" y="-43.18" smashed="yes" rot="R270">
+<attribute name="NAME" x="258.0386" y="-39.37" size="1.778" layer="95" rot="R270"/>
+<attribute name="VALUE" x="253.238" y="-39.37" size="1.778" layer="96" rot="R270"/>
+</instance>
+<instance part="GND24" gate="1" x="256.54" y="-50.8" smashed="yes">
+<attribute name="VALUE" x="254" y="-53.34" size="1.778" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -15517,6 +15563,14 @@ Source: tuxgr_12x2_r2.pdf</description>
 <wire x1="454.66" y1="76.2" x2="447.04" y2="76.2" width="0.1524" layer="91"/>
 <wire x1="447.04" y1="76.2" x2="447.04" y2="86.36" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="Q2" gate="G$1" pin="E"/>
+<pinref part="P+18" gate="VCC" pin="VCC"/>
+</segment>
+<segment>
+<pinref part="Q3" gate="G$1" pin="E"/>
+<pinref part="P+19" gate="VCC" pin="VCC"/>
+</segment>
 </net>
 <net name="GND" class="0">
 <segment>
@@ -15637,6 +15691,14 @@ Source: tuxgr_12x2_r2.pdf</description>
 <pinref part="DIS1" gate="G$1" pin="NC@2"/>
 <wire x1="454.66" y1="40.64" x2="452.12" y2="40.64" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="R40" gate="G$1" pin="2"/>
+<pinref part="GND23" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="R42" gate="G$1" pin="2"/>
+<pinref part="GND24" gate="1" pin="GND"/>
+</segment>
 </net>
 <net name="RES*" class="0">
 <segment>
@@ -15684,17 +15746,6 @@ Source: tuxgr_12x2_r2.pdf</description>
 <wire x1="129.54" y1="63.5" x2="129.54" y2="22.86" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="IC7" gate="B" pin="I0"/>
-<wire x1="170.18" y1="10.16" x2="167.64" y2="10.16" width="0.1524" layer="91"/>
-<wire x1="167.64" y1="10.16" x2="167.64" y2="7.62" width="0.1524" layer="91"/>
-<pinref part="IC7" gate="B" pin="I1"/>
-<wire x1="167.64" y1="7.62" x2="167.64" y2="5.08" width="0.1524" layer="91"/>
-<wire x1="167.64" y1="5.08" x2="170.18" y2="5.08" width="0.1524" layer="91"/>
-<wire x1="167.64" y1="7.62" x2="165.1" y2="7.62" width="0.1524" layer="91"/>
-<junction x="167.64" y="7.62"/>
-<label x="165.1" y="7.62" size="1.27" layer="95" rot="R180" xref="yes"/>
-</segment>
-<segment>
 <pinref part="IC9-PERIPHERALS" gate="VIA" pin="PHI2"/>
 <wire x1="406.4" y1="73.66" x2="408.94" y2="73.66" width="0.1524" layer="91"/>
 <label x="408.94" y="73.66" size="1.27" layer="95" xref="yes"/>
@@ -15711,6 +15762,11 @@ Source: tuxgr_12x2_r2.pdf</description>
 <wire x1="129.54" y1="104.14" x2="132.08" y2="104.14" width="0.1524" layer="91"/>
 <junction x="129.54" y="104.14"/>
 <label x="132.08" y="104.14" size="1.778" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="IC7" gate="B" pin="I0"/>
+<wire x1="170.18" y1="10.16" x2="167.64" y2="10.16" width="0.1524" layer="91"/>
+<label x="167.64" y="10.16" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -16654,8 +16710,8 @@ Source: tuxgr_12x2_r2.pdf</description>
 </segment>
 <segment>
 <pinref part="D1" gate="G$1" pin="A"/>
-<wire x1="210.82" y1="25.4" x2="208.28" y2="25.4" width="0.1524" layer="91"/>
-<label x="208.28" y="25.4" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="210.82" y1="-15.24" x2="208.28" y2="-15.24" width="0.1524" layer="91"/>
+<label x="208.28" y="-15.24" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
 <pinref part="R33" gate="G$1" pin="1"/>
@@ -16679,17 +16735,17 @@ Source: tuxgr_12x2_r2.pdf</description>
 <pinref part="IC8-ROM" gate="G$1" pin="/CE"/>
 <wire x1="332.74" y1="48.26" x2="330.2" y2="48.26" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="IC7" gate="B" pin="I1"/>
+<wire x1="170.18" y1="5.08" x2="167.64" y2="5.08" width="0.1524" layer="91"/>
+<label x="167.64" y="5.08" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
 </net>
 <net name="CLOCK*" class="0">
 <segment>
-<pinref part="IC7" gate="B" pin="O"/>
-<wire x1="185.42" y1="7.62" x2="187.96" y2="7.62" width="0.1524" layer="91"/>
-<label x="187.96" y="7.62" size="1.27" layer="95" xref="yes"/>
-</segment>
-<segment>
 <pinref part="D2" gate="G$1" pin="A"/>
-<wire x1="210.82" y1="20.32" x2="208.28" y2="20.32" width="0.1524" layer="91"/>
-<label x="208.28" y="20.32" size="1.27" layer="95" rot="R180" xref="yes"/>
+<wire x1="210.82" y1="-20.32" x2="208.28" y2="-20.32" width="0.1524" layer="91"/>
+<label x="208.28" y="-20.32" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="N$54" class="0">
@@ -16719,17 +16775,15 @@ Source: tuxgr_12x2_r2.pdf</description>
 <net name="N$57" class="0">
 <segment>
 <pinref part="D2" gate="G$1" pin="C"/>
-<wire x1="215.9" y1="20.32" x2="220.98" y2="20.32" width="0.1524" layer="91"/>
+<wire x1="215.9" y1="-20.32" x2="220.98" y2="-20.32" width="0.1524" layer="91"/>
 <pinref part="R32" gate="G$1" pin="1"/>
-<wire x1="220.98" y1="20.32" x2="220.98" y2="17.78" width="0.1524" layer="91"/>
+<wire x1="220.98" y1="-20.32" x2="220.98" y2="-22.86" width="0.1524" layer="91"/>
 <pinref part="D1" gate="G$1" pin="C"/>
-<wire x1="215.9" y1="25.4" x2="220.98" y2="25.4" width="0.1524" layer="91"/>
-<wire x1="220.98" y1="25.4" x2="220.98" y2="20.32" width="0.1524" layer="91"/>
-<junction x="220.98" y="20.32"/>
-<wire x1="220.98" y1="25.4" x2="220.98" y2="30.48" width="0.1524" layer="91"/>
-<junction x="220.98" y="25.4"/>
-<pinref part="IC6-RAM" gate="G$1" pin="!CS"/>
-<wire x1="220.98" y1="30.48" x2="223.52" y2="30.48" width="0.1524" layer="91"/>
+<wire x1="215.9" y1="-15.24" x2="220.98" y2="-15.24" width="0.1524" layer="91"/>
+<wire x1="220.98" y1="-15.24" x2="220.98" y2="-20.32" width="0.1524" layer="91"/>
+<junction x="220.98" y="-20.32"/>
+<wire x1="220.98" y1="-20.32" x2="223.52" y2="-20.32" width="0.1524" layer="91"/>
+<pinref part="R39" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="N$55" class="0">
@@ -16988,6 +17042,45 @@ Source: tuxgr_12x2_r2.pdf</description>
 <pinref part="DIS1" gate="G$1" pin="NC@1"/>
 <wire x1="454.66" y1="43.18" x2="452.12" y2="43.18" width="0.1524" layer="91"/>
 <label x="452.12" y="43.18" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="N$67" class="0">
+<segment>
+<pinref part="IC6-RAM" gate="G$1" pin="!CS"/>
+<wire x1="223.52" y1="30.48" x2="218.44" y2="30.48" width="0.1524" layer="91"/>
+<pinref part="IC7" gate="B" pin="O"/>
+<wire x1="185.42" y1="7.62" x2="218.44" y2="7.62" width="0.1524" layer="91"/>
+<wire x1="218.44" y1="7.62" x2="218.44" y2="30.48" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$68" class="0">
+<segment>
+<pinref part="R39" gate="G$1" pin="2"/>
+<pinref part="Q2" gate="G$1" pin="B"/>
+</segment>
+</net>
+<net name="N$69" class="0">
+<segment>
+<pinref part="Q2" gate="G$1" pin="C"/>
+<pinref part="R40" gate="G$1" pin="1"/>
+<wire x1="238.76" y1="-25.4" x2="238.76" y2="-27.94" width="0.1524" layer="91"/>
+<pinref part="R41" gate="G$1" pin="1"/>
+<wire x1="238.76" y1="-27.94" x2="238.76" y2="-30.48" width="0.1524" layer="91"/>
+<wire x1="241.3" y1="-27.94" x2="238.76" y2="-27.94" width="0.1524" layer="91"/>
+<junction x="238.76" y="-27.94"/>
+</segment>
+</net>
+<net name="N$70" class="0">
+<segment>
+<pinref part="Q3" gate="G$1" pin="B"/>
+<pinref part="R41" gate="G$1" pin="2"/>
+</segment>
+</net>
+<net name="N$71" class="0">
+<segment>
+<pinref part="Q3" gate="G$1" pin="C"/>
+<pinref part="R42" gate="G$1" pin="1"/>
+<wire x1="256.54" y1="-38.1" x2="256.54" y2="-33.02" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

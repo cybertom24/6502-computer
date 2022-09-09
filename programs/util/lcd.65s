@@ -1,0 +1,168 @@
+; --- LCD ---
+; This file is used to setup and provide subroutines to control the LCD display
+;
+; IMPORTANT:
+; Wait at least 15ms after power-up before initilazing the LCD
+
+; N = 0 for 1 line
+;   = 1 for 2 lines
+; F = 0 for 5x8
+;   = 1 for 5x10
+; I/D = 0 for decrement
+;     = 1 for increment
+; S = 1 which accompanies display shift
+
+ .INCLUDE "C:\Users\savol\Documents\CyberIndustries\Progetti\6502-computer\programs\util\costants.65s"
+
+; public:
+  ; util:
+LCD_rows = 16
+LCD_columns = 2
+delay = 10
+  ; pin (all on port A of the 65C22):
+LCD_pin_RS  = 0		; PA0
+LCD_pin_RW  = 1		; PA1
+LCD_pin_E   = 2		; PA2
+LCD_pin_LED = 3		; PA3
+LCD_pin_D4  = 4		; PA4
+LCD_pin_D5  = 5		; PA5
+LCD_pin_D6  = 6		; PA6
+LCD_pin_D7  = 7		; PA7
+
+LCD_RS  = 1 << LCD_pin_RS
+LCD_RW  = 1 << LCD_pin_RW
+LCD_E   = 1 << LCD_pin_E
+LCD_LED = 1 << LCD_pin_LED
+LCD_D4  = 1 << LCD_pin_D4
+LCD_D5  = 1 << LCD_pin_D5
+LCD_D6  = 1 << LCD_pin_D6
+LCD_D7  = 1 << LCD_pin_D7
+
+LCD_INIT_SEQ:
+ .DB LCD_LED | LCD_D4 | LCD_D5
+ .DB LCD_LED | LCD_D4 | LCD_D5
+ .DB LCD_LED | LCD_D4 | LCD_D5
+ .DB LCD_LED | LCD_D5
+ .DB LCD_LED | LCD_D5
+ .DB LCD_LED | LCD_D7		; LED, N = 1 (at D7), F = 0 (at D6)
+ .DB LCD_LED
+ .DB LCD_LED | LCD_D7
+ .DB LCD_LED
+ .DB LCD_LED | LCD_D4
+ .DB LCD_LED
+ .DB LCD_LED | LCD_D5 | LCD_D6	; LED, S = 0 (at D4), I/D = 1 (at D5) 
+LCD_INIT_SEQ_end:
+LCD_INIT_SEQ_length = LCD_INIT_SEQ_end - LCD_INIT_SEQ 
+
+CLEAR_0 = LCD_LED			; D7..D4
+CLEAR_1 = LCD_LED | LCD_D4		; D3..D0 (D4 == D0)
+
+HOME_0 = LCD_LED
+HOME_1 = LCD_LED | LCD_D5
+
+; -------------------------------------------------------------------------------------------------------
+
+; Write the data placed inside the A register to the LCD
+LCD_write:
+ PHX		; Save the state of X
+ 
+ TAX		; Copy the data into X register
+ ORA #LCD_E	; Add the E signal
+ STX PORTA	; Data set with E = 0
+ STA PORTA	; Data set with E = 1
+ STX PORTA	; Data set with E = 0
+ 
+ PLX		; Retrieve the state of X
+ 
+ RTS
+
+; -------------------------------------------------------------------------------------------------------
+
+; Initialize the LCD
+LCD_init:
+ PHA			; Save the state of A, X and Y
+ PHX
+ PHY
+ 
+ LDA #$FF		; All port A pins to output
+ STA DDRA
+ 
+ LDA LCD_INIT_SEQ
+ JSR LCD_write
+ 
+ ; Wait at least 4.1ms
+ .REPEAT delay;
+ NOP
+ .ENDR
+ 
+ LDA LCD_INIT_SEQ + 1
+ JSR LCD_write
+ 
+ ; Wait at least 10Us
+ .REPEAT delay;
+ NOP
+ .ENDR
+ 
+ LDA LCD_INIT_SEQ + 2
+ JSR LCD_write
+ 
+ LDY #2
+.init_loop:
+ INY			; Y++
+ CPY #LCD_INIT_SEQ_length	; Compare Y and the length of the sequence
+ BCS .init_loop_end	; Branch if Y >= length
+ LDA LCD_INIT_SEQ, Y	; Else load the next byte using Y as an offset
+ JSR LCD_write
+ JMP .init_loop		; Go back and continue the loop
+.init_loop_end:
+
+ PLY			; Retrieve the state of A, X and Y
+ PLX
+ PLA
+
+ RTS
+ 
+; -------------------------------------------------------------------------------------------------------
+
+LCD_BLINK = LCD_D4
+LCD_CURSOR = LCD_D5
+LCD_DISPLAY = LCD_D6
+
+LCD_DISPLAY_0 = 0
+LCD_DISPLAY_1 = LCD_D7
+
+; Control the display by setting flags in the A register
+; Use the costants LCD_CURSOR, LCD_DISPLAY, LCD_BLINK and LCD_LED
+LCD_setDisplay:
+ PHA			; Save the flags into the stack 
+ LDA #LCD_DISPLAY_0	; Write the first byte
+ JSR LCD_write
+ PLA			; Retrieve the flags
+ ORA #LCD_DISPLAY_1	; Add the bit (Display code: (RS RW D7 D6 D5 D4 = 0 0 1 D C B)
+ JSR LCD_write
+ RTS
+ 
+; -------------------------------------------------------------------------------------------------------
+
+LCD_PRINT = LCD_LED | LCD_RS
+
+; Print the character saved into the A register to the LCD
+LCD_print:
+ ; First the 4 MSBs of the character
+ PHA			; Copy the A register into the stack
+ AND #@11110000		; Get the 4 MSBs of the char
+ ORA #LCD_PRINT		; Add the command for printing
+ JSR LCD_write		; Write the data
+ 
+ ; Now the 4 LSBs
+ PLA			; Retrieve the char
+ ASL			; Shift to the left the bits of the character
+ ASL
+ ASL
+ ASL
+ ORA #LCD_PRINT		; Add the command
+ JSR LCD_write		; Wirte the data
+ 
+ RTS			; Return
+
+; -------------------------------------------------------------------------------------------------------
