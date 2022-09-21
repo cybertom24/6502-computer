@@ -1,0 +1,16 @@
+; --- LCD PRINT TEST ---
+
+ .INCLUDE "C:\Users\savol\Documents\CyberIndustries\Progetti\6502-computer\programs\util\lcd.65s"
+
+ .START start
+start:
+ JSR LCD_init		; Initialize the LCD
+ LDA # LCD_DISPLAY | LCD_CURSOR | LCD_BLINK | LCD_LED	; Enable display, cursor, blinking and the led
+ JSR LCD_setDisplay	; Control the display option
+
+ LDA #123
+ JSR LCD_printNumber
+ LDA #' '
+ JSR LCD_print
+ LDA #56
+ JSR LCD_printNumber

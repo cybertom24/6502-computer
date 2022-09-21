@@ -1,0 +1,53 @@
+ .INCLUDE "C:\Users\savol\Documents\CyberIndustries\Progetti\6502-computer\programs\util\lcd.65s"
+ 
+ .START start
+start:
+ JSR LCD_init		; Initialize the LCD
+ LDA # LCD_DISPLAY | LCD_CURSOR | LCD_BLINK | LCD_LED	; Enable display, cursor, blinking and the led
+ JSR LCD_setDisplay	; Control the display option
+ 
+ ; Print title
+ LDX #-1
+print_title:
+ 	INX
+ 	LDA title, X
+ 	CMP #0
+ 	BEQ print_title_end
+ 	JSR LCD_print
+ 	JMP print_title
+print_title_end:
+ 
+ ; Go back to the first char
+ LDA # -title_length + 1
+ JSR LCD_moveCursor_LR
+ 
+ ; Go to the second line
+ JSR LCD_moveCursor_UD
+ 
+ ; Print some numbers
+ LDA #0
+print_numbers:
+	CMP #11
+	BCS print_numbers_end	; Jump if A >= 11
+ 	INA
+ 	PHA
+ 	JSR LCD_printNumber
+ 
+ 	; Print a space
+ 	LDA #' '
+ 	JSR LCD_print
+ 	PLA
+ 	JMP print_numbers
+print_numbers_end:
+ 
+ 
+; End
+here:
+ JMP here
+ 
+
+title:
+ .DB "Numeri:", 0
+title_end:
+
+title_length = title_end - title - 1

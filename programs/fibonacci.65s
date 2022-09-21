@@ -1,7 +1,7 @@
 ; --- Fibonacci ---
 ; This program computes all fibonacci numbers from 1 to 99
 
- .ORG $8000
+ ORG $8000
 
 ; COSTANTS
 out = $1000
@@ -14,20 +14,17 @@ endValue = 100
 ; A := current number
 ; X := previous number
 ; Y := offset
-init:
- LDA #startA		; Start A register to the value of startA
- LDX #startX		; Start X register to the value of startX
- LDY #0			; Reset the offset
+init:   LDA #startA		; Start A register to the value of startA
+        LDX #startX		; Start X register to the value of startX
+        LDY #0			; Reset the offset
  
-loop:
- STA out, Y		; Store the output (counting the offset)
- INY			; Increment the offset
- STX temp		; Save X register into temp address
- TAX			; Copy the value of A into X
- ADC temp		; Sum into A the value saved into temp
- CMP #endValue		; Compare the value of A with the end value
- BCS end		; Branch if the Carry bit is set (C == 1). C is set when A >= endValue
- JMP loop		; Keep the loop going
+loop:   STA out, Y		; Store the output (counting the offset)
+        INY			    ; Increment the offset
+        STX temp		; Save X register into temp address
+        TAX			    ; Copy the value of A into X
+        ADC temp		; Sum into A the value saved into temp
+        CMP #endValue	; Compare the value of A with the end value
+        BCS end		    ; Branch if the Carry bit is set (C == 1). C is set when A >= endValue
+        JMP loop		; Keep the loop going
 
-end:
- JMP init
+end:    JMP init

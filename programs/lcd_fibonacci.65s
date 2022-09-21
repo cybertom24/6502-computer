@@ -1,0 +1,62 @@
+; --- LCD FIBONACCI ---
+; This program will print the Fibonacci sequence on the LCD
+
+ .INCLUDE "C:\Users\savol\Documents\CyberIndustries\Progetti\6502-computer\programs\util\lcd.65s"
+
+title:
+ .DB "Fibonacci:", 0  
+ 
+ 
+ .START start
+start:
+ JSR LCD_init		; Initialize the LCD
+ LDA # LCD_DISPLAY | LCD_CURSOR | LCD_BLINK | LCD_LED	; Enable display, cursor, blinking and the led
+ JSR LCD_setDisplay	; Control the display option
+ 
+ ; Print the title
+ LDX #-1
+print_title:
+ 	INX
+ 	LDA title, X
+ 	CMP #0
+ 	BEQ print_title_end
+ 	JSR LCD_print
+ 	JMP print_title
+print_title_end: 
+ 
+ ; Reset the position of the cursor
+ JSR LCD_home
+ ; Move the cursor down
+ JSR LCD_moveCursor_UD
+ 
+ ; Compute the Fibonacci sequence
+ ; Register A will hold the current number
+ ; Register X will hold the previous number
+ ; Address temp will hold a temporary number used for addition
+ LDA #1
+ LDX #0
+fibonacci:
+	; Show the current number
+	PHA
+	JSR LCD_printNumber	; Print the new number
+	LDA #' '
+	JSR LCD_print		; Print a space character
+	PLA
+	
+	CMP #233	; Check if the end is reached
+	BCS fibonacci_end	; Jump if A >= 233
+	
+	; Calculate the next number
+	STX temp	; Save the previous number
+	TAX		; Copy the value of A into X
+	CLC		; Clear carry flag
+ 	ADC temp	; Add A with temp (the previous number)
+ 	
+ 	; Continue the loop
+ 	JMP fibonacci
+fibonacci_end:
+ 
+; HALT
+here:
+ JMP here 	
+ 	
