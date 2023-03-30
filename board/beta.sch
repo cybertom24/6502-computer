@@ -14297,6 +14297,161 @@ grid 2.54 mm, diameter 6 mm</description>
 <text x="2.667" y="-2.54" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
 <rectangle x1="0.254" y1="-1.27" x2="0.762" y2="1.27" layer="51"/>
 </package>
+<package name="2,8">
+<description>&lt;b&gt;MOUNTING HOLE&lt;/b&gt; 2.8 mm with drill center</description>
+<wire x1="-1.778" y1="0" x2="0" y2="-1.778" width="2.286" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="1.778" x2="1.778" y2="0" width="2.286" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="0.635" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="2.921" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="2.54" width="2.032" layer="40"/>
+<circle x="0" y="0" radius="2.54" width="2.032" layer="39"/>
+<circle x="0" y="0" radius="2.54" width="2.032" layer="41"/>
+<circle x="0" y="0" radius="2.54" width="2.032" layer="42"/>
+<circle x="0" y="0" radius="2.54" width="2.032" layer="43"/>
+<circle x="0" y="0" radius="1.5" width="0.2032" layer="21"/>
+<hole x="0" y="0" drill="2.8"/>
+</package>
+<package name="3,0">
+<description>&lt;b&gt;MOUNTING HOLE&lt;/b&gt; 3.0 mm with drill center</description>
+<wire x1="-2.159" y1="0" x2="0" y2="-2.159" width="2.4892" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.159" x2="2.159" y2="0" width="2.4892" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="3.429" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="39"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="43"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="40"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="41"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="42"/>
+<circle x="0" y="0" radius="1.6" width="0.2032" layer="21"/>
+<text x="-1.27" y="-3.81" size="1.27" layer="48">3,0</text>
+<hole x="0" y="0" drill="3"/>
+</package>
+<package name="3,3">
+<description>&lt;b&gt;MOUNTING HOLE&lt;/b&gt; 3.3 mm with drill center</description>
+<wire x1="-2.159" y1="0" x2="0" y2="-2.159" width="2.4892" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.159" x2="2.159" y2="0" width="2.4892" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="3.429" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="3.048" width="2.54" layer="39"/>
+<circle x="0" y="0" radius="3.048" width="2.54" layer="40"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="43"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="41"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="42"/>
+<circle x="0" y="0" radius="1.75" width="0.2032" layer="21"/>
+<hole x="0" y="0" drill="3.3"/>
+</package>
+<package name="3,6">
+<description>&lt;b&gt;MOUNTING HOLE&lt;/b&gt; 3.6 mm with drill center</description>
+<wire x1="-2.159" y1="0" x2="0" y2="-2.159" width="2.4892" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.159" x2="2.159" y2="0" width="2.4892" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="3.429" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="3.048" width="2.7686" layer="39"/>
+<circle x="0" y="0" radius="3.048" width="2.7686" layer="40"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="43"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="41"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="42"/>
+<circle x="0" y="0" radius="1.9" width="0.2032" layer="21"/>
+<hole x="0" y="0" drill="3.6"/>
+</package>
+<package name="4,1">
+<description>&lt;b&gt;MOUNTING HOLE&lt;/b&gt; 4.1 mm with drill center</description>
+<wire x1="-2.54" y1="0" x2="0" y2="-2.54" width="3.9116" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.54" x2="2.54" y2="0" width="3.9116" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="4.4958" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="3.81" width="2.54" layer="39"/>
+<circle x="0" y="0" radius="3.81" width="2.54" layer="40"/>
+<circle x="0" y="0" radius="3.81" width="2.54" layer="41"/>
+<circle x="0" y="0" radius="3.81" width="2.54" layer="42"/>
+<circle x="0" y="0" radius="3.81" width="2.54" layer="43"/>
+<circle x="0" y="0" radius="2.15" width="0.1524" layer="21"/>
+<hole x="0" y="0" drill="4.1"/>
+</package>
+<package name="4,5">
+<description>&lt;b&gt;MOUNTING HOLE&lt;/b&gt; 4.5 mm with drill center</description>
+<wire x1="4.445" y1="0" x2="2.159" y2="0" width="0.0508" layer="21"/>
+<wire x1="0" y1="4.445" x2="0" y2="2.159" width="0.0508" layer="21"/>
+<wire x1="-2.159" y1="0" x2="-4.445" y2="0" width="0.0508" layer="21"/>
+<wire x1="0" y1="-2.159" x2="0" y2="-4.445" width="0.0508" layer="21"/>
+<wire x1="-2.54" y1="0" x2="0" y2="-2.54" width="3.9116" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.54" x2="2.54" y2="0" width="3.9116" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="4.4958" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="4.699" width="4.5466" layer="39"/>
+<circle x="0" y="0" radius="4.699" width="4.5466" layer="40"/>
+<circle x="0" y="0" radius="3.8184" width="2.54" layer="41"/>
+<circle x="0" y="0" radius="3.81" width="2.54" layer="42"/>
+<circle x="0" y="0" radius="3.81" width="2.54" layer="43"/>
+<circle x="0" y="0" radius="2.35" width="0.1524" layer="21"/>
+<text x="-1.27" y="-4.445" size="1.27" layer="48">4,5</text>
+<hole x="0" y="0" drill="4.5"/>
+</package>
+<package name="5,0">
+<description>&lt;b&gt;MOUNTING HOLE&lt;/b&gt; 5.0 mm with drill center</description>
+<wire x1="4.445" y1="0" x2="2.159" y2="0" width="0.0508" layer="21"/>
+<wire x1="0" y1="4.445" x2="0" y2="2.159" width="0.0508" layer="21"/>
+<wire x1="-2.159" y1="0" x2="-4.445" y2="0" width="0.0508" layer="21"/>
+<wire x1="0" y1="-2.159" x2="0" y2="-4.445" width="0.0508" layer="21"/>
+<wire x1="-2.54" y1="0" x2="0" y2="-2.54" width="3.9116" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.54" x2="2.54" y2="0" width="3.9116" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="4.4958" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="4.699" width="4.5466" layer="39"/>
+<circle x="0" y="0" radius="4.699" width="4.5466" layer="40"/>
+<circle x="0" y="0" radius="4.826" width="2.54" layer="43"/>
+<circle x="0" y="0" radius="4.826" width="2.54" layer="42"/>
+<circle x="0" y="0" radius="4.826" width="2.54" layer="41"/>
+<circle x="0" y="0" radius="2.6" width="0.1524" layer="21"/>
+<text x="-1.27" y="-4.445" size="1.27" layer="48">5,0</text>
+<hole x="0" y="0" drill="5"/>
+</package>
+<package name="3,2">
+<description>&lt;b&gt;MOUNTING HOLE&lt;/b&gt; 3.2 mm with drill center</description>
+<wire x1="-2.159" y1="0" x2="0" y2="-2.159" width="2.4892" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.159" x2="2.159" y2="0" width="2.4892" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="3.429" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="39"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="43"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="40"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="41"/>
+<circle x="0" y="0" radius="3.048" width="2.032" layer="42"/>
+<circle x="0" y="0" radius="1.7" width="0.2032" layer="21"/>
+<hole x="0" y="0" drill="3.2"/>
+</package>
+<package name="4,3">
+<description>&lt;b&gt;MOUNTING HOLE&lt;/b&gt; 4.3 mm with drill center</description>
+<wire x1="-2.54" y1="0" x2="0" y2="-2.54" width="3.9116" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.54" x2="2.54" y2="0" width="3.9116" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="4.4958" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.762" width="0.1524" layer="51"/>
+<circle x="0" y="0" radius="4.699" width="4.5466" layer="39"/>
+<circle x="0" y="0" radius="4.699" width="4.5466" layer="40"/>
+<circle x="0" y="0" radius="3.8184" width="2.54" layer="41"/>
+<circle x="0" y="0" radius="3.81" width="2.54" layer="42"/>
+<circle x="0" y="0" radius="3.81" width="2.54" layer="43"/>
+<circle x="0" y="0" radius="2.25" width="0.1524" layer="21"/>
+<hole x="0" y="0" drill="4.3"/>
+</package>
+<package name="5,5">
+<description>&lt;b&gt;MOUNTING HOLE&lt;/b&gt; 5.5 mm with drill center</description>
+<wire x1="4.445" y1="0" x2="2.159" y2="0" width="0.0508" layer="21"/>
+<wire x1="0" y1="4.445" x2="0" y2="2.159" width="0.0508" layer="21"/>
+<wire x1="-2.159" y1="0" x2="-4.445" y2="0" width="0.0508" layer="21"/>
+<wire x1="0" y1="-2.159" x2="0" y2="-4.445" width="0.0508" layer="21"/>
+<wire x1="-2.54" y1="0" x2="0" y2="-2.54" width="3.9116" layer="51" curve="90" cap="flat"/>
+<wire x1="0" y1="2.54" x2="2.54" y2="0" width="3.9116" layer="51" curve="-90" cap="flat"/>
+<circle x="0" y="0" radius="4.4958" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.762" width="0.4572" layer="51"/>
+<circle x="0" y="0" radius="4.699" width="4.5466" layer="39"/>
+<circle x="0" y="0" radius="4.699" width="4.5466" layer="40"/>
+<circle x="0" y="0" radius="4.826" width="2.54" layer="43"/>
+<circle x="0" y="0" radius="4.826" width="2.54" layer="42"/>
+<circle x="0" y="0" radius="4.826" width="2.54" layer="41"/>
+<circle x="0" y="0" radius="2.85" width="0.1524" layer="21"/>
+<hole x="0" y="0" drill="5.5"/>
+</package>
 </packages>
 <symbols>
 <symbol name="CPOL">
@@ -14310,6 +14465,16 @@ grid 2.54 mm, diameter 6 mm</description>
 <rectangle x1="-1.651" y1="-2.54" x2="1.651" y2="-1.651" layer="94"/>
 <pin name="-" x="0" y="-5.08" visible="off" length="short" direction="pas" rot="R90"/>
 <pin name="+" x="0" y="2.54" visible="off" length="short" direction="pas" rot="R270"/>
+</symbol>
+<symbol name="MOUNT-HOLE">
+<wire x1="0" y1="1.27" x2="1.27" y2="0" width="1.524" layer="94" curve="-90" cap="flat"/>
+<wire x1="-1.27" y1="0" x2="0" y2="-1.27" width="1.524" layer="94" curve="90" cap="flat"/>
+<wire x1="-0.508" y1="0" x2="0.508" y2="0" width="0.0508" layer="94"/>
+<wire x1="0" y1="0.508" x2="0" y2="-0.508" width="0.0508" layer="94"/>
+<circle x="0" y="0" radius="2.032" width="0.0508" layer="94"/>
+<circle x="0" y="0" radius="0.508" width="0.0508" layer="94"/>
+<text x="2.032" y="0.5842" size="1.778" layer="95">&gt;NAME</text>
+<text x="2.032" y="-2.4638" size="1.778" layer="96">&gt;VALUE</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -15500,6 +15665,64 @@ grid 2.54 mm, diameter 6 mm</description>
 </device>
 </devices>
 </deviceset>
+<deviceset name="MOUNT-HOLE" prefix="H">
+<description>&lt;b&gt;MOUNTING HOLE&lt;/b&gt; with drill center marker</description>
+<gates>
+<gate name="G$1" symbol="MOUNT-HOLE" x="0" y="0"/>
+</gates>
+<devices>
+<device name="2.8" package="2,8">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="3.0" package="3,0">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="3.3" package="3,3">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="3.6" package="3,6">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="4.1" package="4,1">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="4.5" package="4,5">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="5.0" package="5,0">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="3.2" package="3,2">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="4.3" package="4,3">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="5.5" package="5,5">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 <library name="CiniTechLibrary">
@@ -15566,7 +15789,7 @@ grid 2.54 mm, diameter 6 mm</description>
 </class>
 </classes>
 <parts>
-<part name="IC1" library="6502" deviceset="W65C02S" device="P" technology="6T"/>
+<part name="IC1-CPU" library="6502" deviceset="W65C02S" device="P" technology="6T"/>
 <part name="P+1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="GND1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -15582,7 +15805,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <part name="P+4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="P+6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="GND9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="IC7" library="74xx-eu" library_urn="urn:adsk.eagle:library:85" deviceset="74*00" device="N" package3d_urn="urn:adsk.eagle:package:16407/2" technology="LS"/>
+<part name="IC7-NAND" library="74xx-eu" library_urn="urn:adsk.eagle:library:85" deviceset="74*00" device="N" package3d_urn="urn:adsk.eagle:package:16407/2" technology="LS"/>
 <part name="IC8-ROM" library="atmel-custom" deviceset="AT28C256-28DIP" device=""/>
 <part name="P+7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="GND10" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
@@ -15593,7 +15816,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <part name="P+12" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="GND15" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="GND16" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="QG1" library="crystal" library_urn="urn:adsk.eagle:library:204" deviceset="XO-" device="14" package3d_urn="urn:adsk.eagle:package:12068/1" value="1MHz"/>
+<part name="QG1-XTAL" library="crystal" library_urn="urn:adsk.eagle:library:204" deviceset="XO-" device="14" package3d_urn="urn:adsk.eagle:package:12068/1" value="1MHz"/>
 <part name="P+5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="GND5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="PORT-A" library="con-lstb" library_urn="urn:adsk.eagle:library:162" deviceset="MA13-1" device="" package3d_urn="urn:adsk.eagle:package:8367/1"/>
@@ -15612,6 +15835,8 @@ grid 2.54 mm, diameter 6 mm</description>
 <part name="POW" library="CiniTechLibrary" deviceset="AK500" device="" package3d_urn="urn:adsk.eagle:package:17855270/2"/>
 <part name="P+13" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="GND7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="H1" library="ITIS" deviceset="MOUNT-HOLE" device="3.0"/>
+<part name="H2" library="ITIS" deviceset="MOUNT-HOLE" device="3.0"/>
 </parts>
 <sheets>
 <sheet>
@@ -15620,11 +15845,11 @@ grid 2.54 mm, diameter 6 mm</description>
 <text x="-25.4" y="-35.56" size="1.778" layer="95">ADDR_BUS</text>
 </plain>
 <instances>
-<instance part="IC1" gate="1" x="-55.88" y="2.54" smashed="yes">
+<instance part="IC1-CPU" gate="1" x="-55.88" y="2.54" smashed="yes">
 <attribute name="PART" x="-65.405" y="33.655" size="1.778" layer="95"/>
 <attribute name="VALUE" x="-65.405" y="-30.48" size="1.778" layer="96"/>
 </instance>
-<instance part="IC1" gate="P" x="-93.98" y="55.88" smashed="yes">
+<instance part="IC1-CPU" gate="P" x="-93.98" y="55.88" smashed="yes">
 <attribute name="PART" x="-94.615" y="55.245" size="1.778" layer="95"/>
 </instance>
 <instance part="P+1" gate="VCC" x="-93.98" y="66.04" smashed="yes">
@@ -15677,7 +15902,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <instance part="GND9" gate="1" x="38.1" y="-33.02" smashed="yes">
 <attribute name="VALUE" x="35.56" y="-35.56" size="1.778" layer="96"/>
 </instance>
-<instance part="IC7" gate="A" x="-58.42" y="-40.64" smashed="yes">
+<instance part="IC7-NAND" gate="A" x="-58.42" y="-40.64" smashed="yes">
 <attribute name="NAME" x="-55.88" y="-37.465" size="1.778" layer="95"/>
 <attribute name="VALUE" x="-55.88" y="-45.72" size="1.778" layer="96"/>
 </instance>
@@ -15694,11 +15919,11 @@ grid 2.54 mm, diameter 6 mm</description>
 <instance part="P+8" gate="VCC" x="99.06" y="-2.54" smashed="yes">
 <attribute name="VALUE" x="96.52" y="-5.08" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="IC7" gate="B" x="-58.42" y="-53.34" smashed="yes">
+<instance part="IC7-NAND" gate="B" x="-58.42" y="-53.34" smashed="yes">
 <attribute name="NAME" x="-55.88" y="-50.165" size="1.778" layer="95"/>
 <attribute name="VALUE" x="-55.88" y="-58.42" size="1.778" layer="96"/>
 </instance>
-<instance part="IC7" gate="P" x="-88.9" y="-45.72" smashed="yes">
+<instance part="IC7-NAND" gate="P" x="-88.9" y="-45.72" smashed="yes">
 <attribute name="NAME" x="-89.535" y="-46.355" size="1.778" layer="95"/>
 </instance>
 <instance part="GND14" gate="1" x="-88.9" y="-55.88" smashed="yes">
@@ -15723,7 +15948,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <instance part="GND16" gate="1" x="99.06" y="-15.24" smashed="yes">
 <attribute name="VALUE" x="96.52" y="-17.78" size="1.778" layer="96"/>
 </instance>
-<instance part="QG1" gate="G$1" x="-22.86" y="58.42" smashed="yes">
+<instance part="QG1-XTAL" gate="G$1" x="-22.86" y="58.42" smashed="yes">
 <attribute name="NAME" x="-30.48" y="66.675" size="1.778" layer="95"/>
 <attribute name="VALUE" x="-30.48" y="48.26" size="1.778" layer="96"/>
 </instance>
@@ -15794,6 +16019,14 @@ grid 2.54 mm, diameter 6 mm</description>
 <instance part="GND7" gate="1" x="-127" y="45.72" smashed="yes">
 <attribute name="VALUE" x="-129.54" y="43.18" size="1.778" layer="96"/>
 </instance>
+<instance part="H1" gate="G$1" x="17.78" y="-50.8" smashed="yes">
+<attribute name="NAME" x="19.812" y="-50.2158" size="1.778" layer="95"/>
+<attribute name="VALUE" x="19.812" y="-53.2638" size="1.778" layer="96"/>
+</instance>
+<instance part="H2" gate="G$1" x="17.78" y="-58.42" smashed="yes">
+<attribute name="NAME" x="19.812" y="-57.8358" size="1.778" layer="95"/>
+<attribute name="VALUE" x="19.812" y="-60.8838" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 <bus name="D0,D1,D2,D3,D4,D5,D6,D7">
@@ -15824,7 +16057,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <nets>
 <net name="VCC" class="0">
 <segment>
-<pinref part="IC1" gate="P" pin="VDD"/>
+<pinref part="IC1-CPU" gate="P" pin="VDD"/>
 <pinref part="P+1" gate="VCC" pin="VCC"/>
 </segment>
 <segment>
@@ -15834,11 +16067,11 @@ grid 2.54 mm, diameter 6 mm</description>
 <pinref part="P+2" gate="VCC" pin="VCC"/>
 </segment>
 <segment>
-<pinref part="IC1" gate="1" pin="!SOB"/>
+<pinref part="IC1-CPU" gate="1" pin="!SOB"/>
 <wire x1="-43.18" y1="27.94" x2="-27.94" y2="27.94" width="0.1524" layer="91"/>
 <pinref part="P+3" gate="VCC" pin="VCC"/>
 <wire x1="-27.94" y1="27.94" x2="-27.94" y2="30.48" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="1" pin="BE"/>
+<pinref part="IC1-CPU" gate="1" pin="BE"/>
 <wire x1="-43.18" y1="25.4" x2="-27.94" y2="25.4" width="0.1524" layer="91"/>
 <wire x1="-27.94" y1="25.4" x2="-27.94" y2="27.94" width="0.1524" layer="91"/>
 <junction x="-27.94" y="27.94"/>
@@ -15866,7 +16099,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <wire x1="99.06" y1="-7.62" x2="99.06" y2="-5.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="IC7" gate="P" pin="VCC"/>
+<pinref part="IC7-NAND" gate="P" pin="VCC"/>
 <pinref part="P+9" gate="VCC" pin="VCC"/>
 </segment>
 <segment>
@@ -15874,7 +16107,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <pinref part="P+12" gate="VCC" pin="VCC"/>
 </segment>
 <segment>
-<pinref part="QG1" gate="G$1" pin="VCC"/>
+<pinref part="QG1-XTAL" gate="G$1" pin="VCC"/>
 <wire x1="-35.56" y1="63.5" x2="-38.1" y2="63.5" width="0.1524" layer="91"/>
 <pinref part="P+5" gate="VCC" pin="VCC"/>
 <wire x1="-38.1" y1="63.5" x2="-38.1" y2="66.04" width="0.1524" layer="91"/>
@@ -15925,7 +16158,7 @@ grid 2.54 mm, diameter 6 mm</description>
 </net>
 <net name="GND" class="0">
 <segment>
-<pinref part="IC1" gate="P" pin="VSS"/>
+<pinref part="IC1-CPU" gate="P" pin="VSS"/>
 <pinref part="GND1" gate="1" pin="GND"/>
 </segment>
 <segment>
@@ -15951,7 +16184,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <wire x1="58.42" y1="-30.48" x2="58.42" y2="-33.02" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="IC7" gate="P" pin="GND"/>
+<pinref part="IC7-NAND" gate="P" pin="GND"/>
 <pinref part="GND14" gate="1" pin="GND"/>
 </segment>
 <segment>
@@ -15965,7 +16198,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <pinref part="GND16" gate="1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="QG1" gate="G$1" pin="GND"/>
+<pinref part="QG1-XTAL" gate="G$1" pin="GND"/>
 <wire x1="-35.56" y1="53.34" x2="-38.1" y2="53.34" width="0.1524" layer="91"/>
 <pinref part="GND5" gate="1" pin="GND"/>
 <wire x1="-38.1" y1="53.34" x2="-38.1" y2="50.8" width="0.1524" layer="91"/>
@@ -16010,7 +16243,7 @@ grid 2.54 mm, diameter 6 mm</description>
 </net>
 <net name="RES*" class="0">
 <segment>
-<pinref part="IC1" gate="1" pin="!RESB"/>
+<pinref part="IC1-CPU" gate="1" pin="!RESB"/>
 <wire x1="-43.18" y1="30.48" x2="-40.64" y2="30.48" width="0.1524" layer="91"/>
 <label x="-40.64" y="30.48" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -16049,7 +16282,7 @@ grid 2.54 mm, diameter 6 mm</description>
 </net>
 <net name="CLOCK" class="0">
 <segment>
-<pinref part="IC1" gate="1" pin="PHI2"/>
+<pinref part="IC1-CPU" gate="1" pin="PHI2"/>
 <wire x1="-43.18" y1="10.16" x2="-40.64" y2="10.16" width="0.1524" layer="91"/>
 <label x="-40.64" y="10.16" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -16059,12 +16292,12 @@ grid 2.54 mm, diameter 6 mm</description>
 <label x="144.78" y="12.7" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="IC7" gate="B" pin="I0"/>
+<pinref part="IC7-NAND" gate="B" pin="I0"/>
 <wire x1="-66.04" y1="-50.8" x2="-68.58" y2="-50.8" width="0.1524" layer="91"/>
 <label x="-68.58" y="-50.8" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="QG1" gate="G$1" pin="OUT"/>
+<pinref part="QG1-XTAL" gate="G$1" pin="OUT"/>
 <wire x1="-10.16" y1="58.42" x2="-7.62" y2="58.42" width="0.1524" layer="91"/>
 <label x="-7.62" y="58.42" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -16082,13 +16315,13 @@ grid 2.54 mm, diameter 6 mm</description>
 <net name="N$1" class="0">
 <segment>
 <pinref part="R3" gate="G$1" pin="2"/>
-<pinref part="IC1" gate="1" pin="RDY"/>
+<pinref part="IC1-CPU" gate="1" pin="RDY"/>
 <wire x1="-73.66" y1="27.94" x2="-68.58" y2="27.94" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="D7" class="0">
 <segment>
-<pinref part="IC1" gate="1" pin="D7"/>
+<pinref part="IC1-CPU" gate="1" pin="D7"/>
 <wire x1="-43.18" y1="-25.4" x2="-30.48" y2="-25.4" width="0.1524" layer="91"/>
 <wire x1="-27.94" y1="-22.86" x2="-30.48" y2="-25.4" width="0.1524" layer="91"/>
 </segment>
@@ -16112,7 +16345,7 @@ grid 2.54 mm, diameter 6 mm</description>
 </net>
 <net name="D6" class="0">
 <segment>
-<pinref part="IC1" gate="1" pin="D6"/>
+<pinref part="IC1-CPU" gate="1" pin="D6"/>
 <wire x1="-43.18" y1="-22.86" x2="-30.48" y2="-22.86" width="0.1524" layer="91"/>
 <wire x1="-27.94" y1="-20.32" x2="-30.48" y2="-22.86" width="0.1524" layer="91"/>
 </segment>
@@ -16136,7 +16369,7 @@ grid 2.54 mm, diameter 6 mm</description>
 </net>
 <net name="D5" class="0">
 <segment>
-<pinref part="IC1" gate="1" pin="D5"/>
+<pinref part="IC1-CPU" gate="1" pin="D5"/>
 <wire x1="-43.18" y1="-20.32" x2="-30.48" y2="-20.32" width="0.1524" layer="91"/>
 <wire x1="-27.94" y1="-17.78" x2="-30.48" y2="-20.32" width="0.1524" layer="91"/>
 </segment>
@@ -16160,7 +16393,7 @@ grid 2.54 mm, diameter 6 mm</description>
 </net>
 <net name="D4" class="0">
 <segment>
-<pinref part="IC1" gate="1" pin="D4"/>
+<pinref part="IC1-CPU" gate="1" pin="D4"/>
 <wire x1="-43.18" y1="-17.78" x2="-30.48" y2="-17.78" width="0.1524" layer="91"/>
 <wire x1="-27.94" y1="-15.24" x2="-30.48" y2="-17.78" width="0.1524" layer="91"/>
 </segment>
@@ -16184,7 +16417,7 @@ grid 2.54 mm, diameter 6 mm</description>
 </net>
 <net name="D3" class="0">
 <segment>
-<pinref part="IC1" gate="1" pin="D3"/>
+<pinref part="IC1-CPU" gate="1" pin="D3"/>
 <wire x1="-43.18" y1="-15.24" x2="-30.48" y2="-15.24" width="0.1524" layer="91"/>
 <wire x1="-27.94" y1="-12.7" x2="-30.48" y2="-15.24" width="0.1524" layer="91"/>
 </segment>
@@ -16208,7 +16441,7 @@ grid 2.54 mm, diameter 6 mm</description>
 </net>
 <net name="D2" class="0">
 <segment>
-<pinref part="IC1" gate="1" pin="D2"/>
+<pinref part="IC1-CPU" gate="1" pin="D2"/>
 <wire x1="-43.18" y1="-12.7" x2="-30.48" y2="-12.7" width="0.1524" layer="91"/>
 <wire x1="-27.94" y1="-10.16" x2="-30.48" y2="-12.7" width="0.1524" layer="91"/>
 </segment>
@@ -16232,7 +16465,7 @@ grid 2.54 mm, diameter 6 mm</description>
 </net>
 <net name="D1" class="0">
 <segment>
-<pinref part="IC1" gate="1" pin="D1"/>
+<pinref part="IC1-CPU" gate="1" pin="D1"/>
 <wire x1="-43.18" y1="-10.16" x2="-30.48" y2="-10.16" width="0.1524" layer="91"/>
 <wire x1="-27.94" y1="-7.62" x2="-30.48" y2="-10.16" width="0.1524" layer="91"/>
 </segment>
@@ -16256,7 +16489,7 @@ grid 2.54 mm, diameter 6 mm</description>
 </net>
 <net name="D0" class="0">
 <segment>
-<pinref part="IC1" gate="1" pin="D0"/>
+<pinref part="IC1-CPU" gate="1" pin="D0"/>
 <wire x1="-43.18" y1="-7.62" x2="-30.48" y2="-7.62" width="0.1524" layer="91"/>
 <wire x1="-27.94" y1="-5.08" x2="-30.48" y2="-7.62" width="0.1524" layer="91"/>
 </segment>
@@ -16280,7 +16513,7 @@ grid 2.54 mm, diameter 6 mm</description>
 </net>
 <net name="A0" class="0">
 <segment>
-<pinref part="IC1" gate="1" pin="A0"/>
+<pinref part="IC1-CPU" gate="1" pin="A0"/>
 <wire x1="-68.58" y1="12.7" x2="-71.12" y2="12.7" width="0.1524" layer="91"/>
 <wire x1="-73.66" y1="10.16" x2="-71.12" y2="12.7" width="0.1524" layer="91"/>
 </segment>
@@ -16302,7 +16535,7 @@ grid 2.54 mm, diameter 6 mm</description>
 </net>
 <net name="A1" class="0">
 <segment>
-<pinref part="IC1" gate="1" pin="A1"/>
+<pinref part="IC1-CPU" gate="1" pin="A1"/>
 <wire x1="-68.58" y1="10.16" x2="-71.12" y2="10.16" width="0.1524" layer="91"/>
 <wire x1="-73.66" y1="7.62" x2="-71.12" y2="10.16" width="0.1524" layer="91"/>
 </segment>
@@ -16324,7 +16557,7 @@ grid 2.54 mm, diameter 6 mm</description>
 </net>
 <net name="A2" class="0">
 <segment>
-<pinref part="IC1" gate="1" pin="A2"/>
+<pinref part="IC1-CPU" gate="1" pin="A2"/>
 <wire x1="-68.58" y1="7.62" x2="-71.12" y2="7.62" width="0.1524" layer="91"/>
 <wire x1="-73.66" y1="5.08" x2="-71.12" y2="7.62" width="0.1524" layer="91"/>
 </segment>
@@ -16347,7 +16580,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <net name="A3" class="0">
 <segment>
 <wire x1="-73.66" y1="2.54" x2="-71.12" y2="5.08" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="1" pin="A3"/>
+<pinref part="IC1-CPU" gate="1" pin="A3"/>
 <wire x1="-71.12" y1="5.08" x2="-68.58" y2="5.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -16369,7 +16602,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <net name="A4" class="0">
 <segment>
 <wire x1="-73.66" y1="0" x2="-71.12" y2="2.54" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="1" pin="A4"/>
+<pinref part="IC1-CPU" gate="1" pin="A4"/>
 <wire x1="-71.12" y1="2.54" x2="-68.58" y2="2.54" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -16386,7 +16619,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <net name="A5" class="0">
 <segment>
 <wire x1="-73.66" y1="-2.54" x2="-71.12" y2="0" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="1" pin="A5"/>
+<pinref part="IC1-CPU" gate="1" pin="A5"/>
 <wire x1="-71.12" y1="0" x2="-68.58" y2="0" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -16403,7 +16636,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <net name="A6" class="0">
 <segment>
 <wire x1="-73.66" y1="-5.08" x2="-71.12" y2="-2.54" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="1" pin="A6"/>
+<pinref part="IC1-CPU" gate="1" pin="A6"/>
 <wire x1="-71.12" y1="-2.54" x2="-68.58" y2="-2.54" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -16420,7 +16653,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <net name="A7" class="0">
 <segment>
 <wire x1="-73.66" y1="-7.62" x2="-71.12" y2="-5.08" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="1" pin="A7"/>
+<pinref part="IC1-CPU" gate="1" pin="A7"/>
 <wire x1="-71.12" y1="-5.08" x2="-68.58" y2="-5.08" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -16437,7 +16670,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <net name="A8" class="0">
 <segment>
 <wire x1="-73.66" y1="-10.16" x2="-71.12" y2="-7.62" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="1" pin="A8"/>
+<pinref part="IC1-CPU" gate="1" pin="A8"/>
 <wire x1="-71.12" y1="-7.62" x2="-68.58" y2="-7.62" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -16454,7 +16687,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <net name="A9" class="0">
 <segment>
 <wire x1="-73.66" y1="-12.7" x2="-71.12" y2="-10.16" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="1" pin="A9"/>
+<pinref part="IC1-CPU" gate="1" pin="A9"/>
 <wire x1="-71.12" y1="-10.16" x2="-68.58" y2="-10.16" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -16471,7 +16704,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <net name="A10" class="0">
 <segment>
 <wire x1="-73.66" y1="-15.24" x2="-71.12" y2="-12.7" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="1" pin="A10"/>
+<pinref part="IC1-CPU" gate="1" pin="A10"/>
 <wire x1="-71.12" y1="-12.7" x2="-68.58" y2="-12.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -16488,7 +16721,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <net name="A11" class="0">
 <segment>
 <wire x1="-73.66" y1="-17.78" x2="-71.12" y2="-15.24" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="1" pin="A11"/>
+<pinref part="IC1-CPU" gate="1" pin="A11"/>
 <wire x1="-71.12" y1="-15.24" x2="-68.58" y2="-15.24" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -16505,7 +16738,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <net name="A12" class="0">
 <segment>
 <wire x1="-73.66" y1="-20.32" x2="-71.12" y2="-17.78" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="1" pin="A12"/>
+<pinref part="IC1-CPU" gate="1" pin="A12"/>
 <wire x1="-71.12" y1="-17.78" x2="-68.58" y2="-17.78" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -16522,7 +16755,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <net name="A13" class="0">
 <segment>
 <wire x1="-73.66" y1="-22.86" x2="-71.12" y2="-20.32" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="1" pin="A13"/>
+<pinref part="IC1-CPU" gate="1" pin="A13"/>
 <wire x1="-71.12" y1="-20.32" x2="-68.58" y2="-20.32" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -16539,7 +16772,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <net name="A14" class="0">
 <segment>
 <wire x1="-73.66" y1="-25.4" x2="-71.12" y2="-22.86" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="1" pin="A14"/>
+<pinref part="IC1-CPU" gate="1" pin="A14"/>
 <wire x1="-71.12" y1="-22.86" x2="-68.58" y2="-22.86" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -16566,14 +16799,14 @@ grid 2.54 mm, diameter 6 mm</description>
 <net name="A15" class="0">
 <segment>
 <wire x1="-73.66" y1="-27.94" x2="-71.12" y2="-25.4" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="1" pin="A15"/>
+<pinref part="IC1-CPU" gate="1" pin="A15"/>
 <wire x1="-71.12" y1="-25.4" x2="-68.58" y2="-25.4" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="IC7" gate="A" pin="I0"/>
+<pinref part="IC7-NAND" gate="A" pin="I0"/>
 <wire x1="-66.04" y1="-38.1" x2="-68.58" y2="-38.1" width="0.1524" layer="91"/>
 <wire x1="-68.58" y1="-38.1" x2="-68.58" y2="-40.64" width="0.1524" layer="91"/>
-<pinref part="IC7" gate="A" pin="I1"/>
+<pinref part="IC7-NAND" gate="A" pin="I1"/>
 <wire x1="-68.58" y1="-40.64" x2="-68.58" y2="-43.18" width="0.1524" layer="91"/>
 <wire x1="-68.58" y1="-43.18" x2="-66.04" y2="-43.18" width="0.1524" layer="91"/>
 <wire x1="-68.58" y1="-40.64" x2="-71.12" y2="-40.64" width="0.1524" layer="91"/>
@@ -16588,7 +16821,7 @@ grid 2.54 mm, diameter 6 mm</description>
 </net>
 <net name="A15*" class="0">
 <segment>
-<pinref part="IC7" gate="A" pin="O"/>
+<pinref part="IC7-NAND" gate="A" pin="O"/>
 <wire x1="-50.8" y1="-40.64" x2="-48.26" y2="-40.64" width="0.1524" layer="91"/>
 <label x="-48.26" y="-40.64" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -16598,7 +16831,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <wire x1="91.44" y1="-12.7" x2="88.9" y2="-12.7" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="IC7" gate="B" pin="I1"/>
+<pinref part="IC7-NAND" gate="B" pin="I1"/>
 <wire x1="-66.04" y1="-55.88" x2="-68.58" y2="-55.88" width="0.1524" layer="91"/>
 <label x="-68.58" y="-55.88" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -16610,7 +16843,7 @@ grid 2.54 mm, diameter 6 mm</description>
 <label x="144.78" y="5.08" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="IC1" gate="1" pin="R!WB"/>
+<pinref part="IC1-CPU" gate="1" pin="R!WB"/>
 <wire x1="-43.18" y1="22.86" x2="-40.64" y2="22.86" width="0.1524" layer="91"/>
 <label x="-40.64" y="22.86" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -16718,7 +16951,7 @@ grid 2.54 mm, diameter 6 mm</description>
 </net>
 <net name="IRQ*" class="0">
 <segment>
-<pinref part="IC1" gate="1" pin="!IRQB"/>
+<pinref part="IC1-CPU" gate="1" pin="!IRQB"/>
 <wire x1="-68.58" y1="25.4" x2="-71.12" y2="25.4" width="0.1524" layer="91"/>
 <label x="-71.12" y="25.4" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
@@ -16831,7 +17064,7 @@ grid 2.54 mm, diameter 6 mm</description>
 </net>
 <net name="CS_RAM*" class="0">
 <segment>
-<pinref part="IC7" gate="B" pin="O"/>
+<pinref part="IC7-NAND" gate="B" pin="O"/>
 <wire x1="-50.8" y1="-53.34" x2="-48.26" y2="-53.34" width="0.1524" layer="91"/>
 <label x="-48.26" y="-53.34" size="1.27" layer="95" xref="yes"/>
 </segment>
@@ -16897,7 +17130,7 @@ grid 2.54 mm, diameter 6 mm</description>
 </net>
 <net name="NMIB*" class="0">
 <segment>
-<pinref part="IC1" gate="1" pin="!NMIB"/>
+<pinref part="IC1-CPU" gate="1" pin="!NMIB"/>
 <wire x1="-68.58" y1="20.32" x2="-71.12" y2="20.32" width="0.1524" layer="91"/>
 <label x="-71.12" y="20.32" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
