@@ -1,0 +1,11 @@
+; --- MATH TEST ---
+; Program which tests math.65s
+
+ .INCLUDE "C:\Users\savol\Documents\CyberIndustries\Progetti\6502-computer\programs\util\math.65s" 
+ 
+ .START start
+start:
+ LDA #20
+ LDX #15
+ JSR MATH_mul8
+ BRK

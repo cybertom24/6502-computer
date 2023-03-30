@@ -22,3 +22,6 @@ Il 6502 ha bisogno che i primi 512 Bytes siano gestiti dalla RAM poichè sono qu
 dallo 0x0000 al 0x01FF siano per forza della RAM, questo obbliga a porre la RAM come prima nella lista degli indirizzi e la ROM a seguire.
 
 Il 65C02 (specialmente quello della Rockwell) può essere fermato mantenendo il CLOCK HIGH e non LOW, poichè l'impulso basso può essere MAX di 5us!
+
+Per il PCB ci sono due porte da 13 pin (VCC, GND, CLOCK, P0...P7, C1, C2) a cui si possono attaccare qualsiasi periferica.
+Come clock uso uno da 1MHz visto che ho un R65C02 da 4Mhz e un R65C22 da 3MHz e non si lamentano se il clock è da 1MHz.

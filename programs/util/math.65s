@@ -1,0 +1,36 @@
+; --- MATH ---
+; This file contains subroutines to do various math operations in 8 or 16 bits
+
+ .INCLUDE "C:\Users\savol\Documents\CyberIndustries\Progetti\6502-computer\programs\util\ram.65s"
+ .INCLUDE "C:\Users\savol\Documents\CyberIndustries\Progetti\6502-computer\programs\util\main.65s" 
+
+; Multiply register A by register X and saves the result into A register
+; If the carry bit is set there has been an overflow and the moltiplication will not complete
+MATH_mul8:
+	; X is not zero so multiply A by X
+	CLD		; Set adding in byte mode
+	STA temp	; Save A value into temp (place in RAM)
+	LDA #0		; Initialize A with 0
+	
+	; Check if X is zero
+	CPX #0		; X ?= 0
+	BEQ .mul8_loop_end	; If X ?= 0 then jump to the end
+	; X is not zero so multiply the two numbers
+.mul8_loop:
+	CLC		; Clear carry flag
+	ADC temp	; A += temp (where temp = starting A)
+
+	DEX		; X--
+	CPX #0		; X ?= 0
+	BEQ .mul8_loop_end
+	
+	; Check if there has been a overflow
+	BCS .mul8_loop_end	; If Carry is set then there has been an overflow during the last addition so exit now
+	
+	JMP .mul8_loop
+.mul8_loop_end:
+	RTS		; Return
+	
+;---------------------------------------------------------------------------------------------------------------
+
+	
