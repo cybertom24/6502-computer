@@ -164,6 +164,9 @@
 <text x="26.3525" y="53.975" size="1.778" layer="25">6502-computer
 &lt;~ β v1.0 ~&gt;
 CyberIndustries</text>
+<text x="11.43" y="50.8" size="1.27" layer="26" rot="MR270">JLCJLCJLCJLC</text>
+<text x="6.0325" y="72.0725" size="0.8128" layer="25" rot="R270">GND</text>
+<text x="6.0325" y="77.1525" size="0.8128" layer="25" rot="R270">+5V</text>
 </plain>
 <libraries>
 <library name="rcl" urn="urn:adsk.eagle:library:334">
@@ -2142,7 +2145,7 @@ design rules under a new name.</description>
 <attribute name="NAME" x="73.9775" y="67.564" size="1.27" layer="25" ratio="10" rot="R180"/>
 </element>
 <element name="POW" library="CiniTechLibrary" package="AK500-2" package3d_urn="urn:adsk.eagle:package:17855270/2" value="AK500" x="2.54" y="76.2" smashed="yes" rot="R270">
-<attribute name="NAME" x="6.54" y="76.2" size="1.27" layer="25" rot="R270"/>
+<attribute name="NAME" x="7.81" y="75.8825" size="1.27" layer="25" rot="R270"/>
 </element>
 <element name="H1" library="ITIS" package="3,0" value="MOUNT-HOLE3.0" x="5.08" y="9.8425" smashed="yes"/>
 <element name="H2" library="ITIS" package="3,0" value="MOUNT-HOLE3.0" x="72.0725" y="74.93" smashed="yes"/>

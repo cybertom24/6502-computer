@@ -2802,19 +2802,16 @@ design rules under a new name.</description>
 <contactref element="IC7-NAND" pad="1"/>
 <contactref element="IC7-NAND" pad="2"/>
 <contactref element="IC9-PERIPHERALS" pad="23"/>
-<wire x1="83.82" y1="69.85" x2="81.28" y2="69.85" width="0.1524" layer="1"/>
-<wire x1="81.28" y1="69.85" x2="81.28" y2="69.5325" width="0.1524" layer="1"/>
-<wire x1="83.82" y1="69.85" x2="83.82" y2="69.5325" width="0.1524" layer="1"/>
 <wire x1="70.485" y1="26.67" x2="69.215" y2="25.4" width="0.1524" layer="16"/>
 <wire x1="70.485" y1="51.435" x2="70.485" y2="29.21" width="0.1524" layer="16"/>
 <wire x1="70.485" y1="29.21" x2="70.485" y2="26.67" width="0.1524" layer="16"/>
 <wire x1="66.675" y1="55.245" x2="70.485" y2="51.435" width="0.1524" layer="16"/>
 <wire x1="64.135" y1="55.245" x2="66.675" y2="55.245" width="0.1524" layer="16"/>
 <wire x1="64.135" y1="50.4825" x2="64.135" y2="55.245" width="0.1524" layer="16"/>
-<wire x1="76.835" y1="64.77" x2="81.28" y2="69.215" width="0.1524" layer="16"/>
-<wire x1="76.835" y1="35.56" x2="76.835" y2="64.77" width="0.1524" layer="16"/>
-<wire x1="70.485" y1="29.21" x2="76.835" y2="35.56" width="0.1524" layer="16"/>
-<wire x1="81.28" y1="69.215" x2="81.28" y2="69.5325" width="0.1524" layer="16"/>
+<wire x1="76.5175" y1="35.2425" x2="76.5175" y2="64.77" width="0.1524" layer="16"/>
+<wire x1="70.485" y1="29.21" x2="76.5175" y2="35.2425" width="0.1524" layer="16"/>
+<wire x1="76.5175" y1="64.77" x2="81.28" y2="69.5325" width="0.1524" layer="16"/>
+<wire x1="81.28" y1="69.5325" x2="83.82" y2="69.5325" width="0.1524" layer="16"/>
 </signal>
 <signal name="A15*">
 <contactref element="IC7-NAND" pad="3"/>

@@ -1,0 +1,12 @@
+; --- DELAY TEST ---
+
+
+ .INCLUDE "C:\Users\savol\Documents\CyberIndustries\Progetti\6502-computer\programs\util\delay.65s"
+ 
+ .START start
+ 
+start:
+ LDA #100
+ JSR DELAY_ms
+ LDA #1
+ BRK

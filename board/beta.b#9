@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="12.5" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
@@ -2126,17 +2126,17 @@ design rules under a new name.</description>
 <element name="C2" library="ITIS" package="E2-5" value="1uF" x="26.035" y="30.7975" smashed="yes" rot="R270">
 <attribute name="NAME" x="28.8925" y="31.496" size="1.27" layer="25" ratio="10"/>
 </element>
-<element name="C3" library="ITIS" package="E2-5" value="1uF" x="10.795" y="24.13" smashed="yes">
-<attribute name="NAME" x="9.8425" y="20.066" size="1.27" layer="25" ratio="10"/>
+<element name="C3" library="ITIS" package="E2-5" value="1uF" x="10.795" y="23.495" smashed="yes">
+<attribute name="NAME" x="9.8425" y="19.431" size="1.27" layer="25" ratio="10"/>
 </element>
-<element name="C4" library="ITIS" package="E2-5" value="1uF" x="88.9" y="24.765" smashed="yes">
-<attribute name="NAME" x="89.8525" y="21.844" size="1.27" layer="25" ratio="10" rot="R180"/>
+<element name="C4" library="ITIS" package="E2-5" value="1uF" x="88.9" y="23.8125" smashed="yes">
+<attribute name="NAME" x="89.8525" y="20.8915" size="1.27" layer="25" ratio="10" rot="R180"/>
 </element>
-<element name="C5" library="ITIS" package="E2-5" value="1uF" x="21.9075" y="17.78" smashed="yes" rot="R90">
-<attribute name="NAME" x="22.86" y="14.859" size="1.27" layer="25" ratio="10" rot="R180"/>
+<element name="C5" library="ITIS" package="E2-5" value="1uF" x="20.6375" y="17.78" smashed="yes" rot="R90">
+<attribute name="NAME" x="21.59" y="14.859" size="1.27" layer="25" ratio="10" rot="R180"/>
 </element>
-<element name="C6" library="ITIS" package="E2-5" value="1uF" x="77.1525" y="69.85" smashed="yes" rot="R90">
-<attribute name="NAME" x="74.93" y="68.5165" size="1.27" layer="25" ratio="10" rot="R180"/>
+<element name="C6" library="ITIS" package="E2-5" value="1uF" x="76.2" y="68.8975" smashed="yes" rot="R90">
+<attribute name="NAME" x="73.9775" y="67.564" size="1.27" layer="25" ratio="10" rot="R180"/>
 </element>
 <element name="POW" library="CiniTechLibrary" package="AK500-2" package3d_urn="urn:adsk.eagle:package:17855270/2" value="AK500" x="2.54" y="76.2" smashed="yes" rot="R270">
 <attribute name="NAME" x="6.54" y="76.2" size="1.27" layer="25" rot="R270"/>
@@ -2173,9 +2173,9 @@ design rules under a new name.</description>
 <vertex x="103.505" y="82.8675"/>
 </polygon>
 <wire x1="5.715" y1="15.875" x2="7.9375" y2="18.0975" width="0.6096" layer="16"/>
-<wire x1="7.9375" y1="18.0975" x2="7.9375" y2="22.86" width="0.6096" layer="16"/>
-<wire x1="7.9375" y1="22.86" x2="9.2075" y2="24.13" width="0.6096" layer="16"/>
-<wire x1="9.2075" y1="24.13" x2="9.779" y2="24.13" width="0.6096" layer="16"/>
+<wire x1="7.9375" y1="18.0975" x2="7.9375" y2="21.59" width="0.6096" layer="16"/>
+<wire x1="9.779" y1="23.495" x2="9.779" y2="23.4315" width="0.6096" layer="16"/>
+<wire x1="9.779" y1="23.4315" x2="7.9375" y2="21.59" width="0.6096" layer="16"/>
 <wire x1="81.28" y1="31.115" x2="81.28" y2="28.575" width="0.6096" layer="16"/>
 <wire x1="36.195" y1="50.4825" x2="36.195" y2="67.31" width="0.6096" layer="16"/>
 <wire x1="36.195" y1="67.31" x2="37.465" y2="68.58" width="0.6096" layer="16"/>
@@ -2379,12 +2379,13 @@ design rules under a new name.</description>
 <wire x1="52.705" y1="33.02" x2="52.705" y2="49.2125" width="0.1524" layer="1"/>
 <wire x1="52.705" y1="49.2125" x2="51.435" y2="50.4825" width="0.1524" layer="1"/>
 <wire x1="4.445" y1="62.23" x2="3.175" y2="60.96" width="0.1524" layer="1"/>
-<wire x1="80.645" y1="62.23" x2="51.435" y2="62.23" width="0.1524" layer="1"/>
-<wire x1="51.435" y1="62.23" x2="4.445" y2="62.23" width="0.1524" layer="1"/>
+<wire x1="80.645" y1="62.23" x2="52.07" y2="62.23" width="0.1524" layer="1"/>
+<wire x1="52.07" y1="62.23" x2="4.445" y2="62.23" width="0.1524" layer="1"/>
 <wire x1="81.28" y1="61.595" x2="80.645" y2="62.23" width="0.1524" layer="1"/>
 <wire x1="51.435" y1="60.325" x2="51.435" y2="50.4825" width="0.1524" layer="16"/>
-<wire x1="51.435" y1="62.23" x2="51.435" y2="60.325" width="0.1524" layer="1"/>
 <via x="51.435" y="60.325" extent="1-16" drill="0.35"/>
+<wire x1="51.435" y1="60.325" x2="51.435" y2="61.595" width="0.1524" layer="1"/>
+<wire x1="51.435" y1="61.595" x2="52.07" y2="62.23" width="0.1524" layer="1"/>
 </signal>
 <signal name="D2">
 <contactref element="IC1-CPU" pad="31"/>
@@ -2712,8 +2713,7 @@ design rules under a new name.</description>
 <contactref element="IC1-CPU" pad="20"/>
 <contactref element="IC2-RAM" pad="7"/>
 <contactref element="IC8-ROM" pad="23"/>
-<wire x1="15.24" y1="43.18" x2="18.415" y2="43.18" width="0.1524" layer="16"/>
-<wire x1="15.24" y1="55.245" x2="15.24" y2="43.18" width="0.1524" layer="16"/>
+<wire x1="15.24" y1="55.245" x2="15.24" y2="43.815" width="0.1524" layer="16"/>
 <wire x1="17.145" y1="57.15" x2="15.24" y2="55.245" width="0.1524" layer="16"/>
 <wire x1="20.32" y1="57.15" x2="17.145" y2="57.15" width="0.1524" layer="16"/>
 <wire x1="20.955" y1="56.515" x2="20.32" y2="57.15" width="0.1524" layer="16"/>
@@ -2730,6 +2730,8 @@ design rules under a new name.</description>
 <wire x1="74.295" y1="34.925" x2="74.295" y2="35.2425" width="0.1524" layer="1"/>
 <via x="20.955" y="56.515" extent="1-16" drill="0.35"/>
 <via x="77.47" y="55.88" extent="1-16" drill="0.35"/>
+<wire x1="15.24" y1="43.815" x2="15.875" y2="43.18" width="0.1524" layer="16"/>
+<wire x1="15.875" y1="43.18" x2="18.415" y2="43.18" width="0.1524" layer="16"/>
 </signal>
 <signal name="A12">
 <contactref element="IC1-CPU" pad="22"/>

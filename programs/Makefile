@@ -2,7 +2,7 @@
 IMAGEMAKER=../script/ROMImage/out/artifacts/ROMImage_jar/ROMImage.jar
 
 LOADER=eeprom
-LOPTION=-path="$(CURDIR)/$(FILE).bin" -action=write
+LOPTION=-path="$(CURDIR)/$(FILE).bin" -action=write -port=COM4
 
 START=32768
 

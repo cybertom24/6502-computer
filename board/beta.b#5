@@ -2286,7 +2286,7 @@ design rules under a new name.</description>
 <wire x1="13.335" y1="68.58" x2="10.795" y2="66.04" width="0.1524" layer="16"/>
 <wire x1="22.225" y1="68.58" x2="13.335" y2="68.58" width="0.1524" layer="16"/>
 <wire x1="88.9" y1="7.62" x2="72.39" y2="7.62" width="0.1524" layer="16"/>
-<wire x1="88.9" y1="69.5325" x2="88.9" y2="7.62" width="0.1524" layer="16"/>
+<wire x1="33.655" y1="50.4825" x2="64.135" y2="25.4" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$1">
 <contactref element="R3" pad="2"/>
@@ -2997,9 +2997,9 @@ design rules under a new name.</description>
 <wire x1="1.27" y1="50.165" x2="3.175" y2="48.26" width="0.1524" layer="1"/>
 <wire x1="1.905" y1="65.405" x2="1.27" y2="64.77" width="0.1524" layer="1"/>
 <wire x1="1.27" y1="64.77" x2="1.27" y2="50.165" width="0.1524" layer="1"/>
-<wire x1="90.17" y1="65.405" x2="1.905" y2="65.405" width="0.1524" layer="1"/>
-<wire x1="93.98" y1="69.215" x2="90.17" y2="65.405" width="0.1524" layer="1"/>
-<wire x1="93.98" y1="69.215" x2="93.98" y2="69.5325" width="0.1524" layer="1"/>
+<wire x1="91.44" y1="65.405" x2="1.905" y2="65.405" width="0.1524" layer="1"/>
+<wire x1="93.98" y1="67.945" x2="91.44" y2="65.405" width="0.1524" layer="1"/>
+<wire x1="93.98" y1="67.945" x2="93.98" y2="69.5325" width="0.1524" layer="1"/>
 </signal>
 <signal name="CA1">
 <contactref element="IC9-PERIPHERALS" pad="40"/>
