@@ -1,0 +1,8 @@
+; --- libs.65s ---
+; Include this file in order to access all libraries
+ 
+ include "./util/ram.65s"
+ include "./util/main.65s"
+ include "./util/math.65s"
+ include "./util/delay.65s"
+ include "./util/lcd.65s"

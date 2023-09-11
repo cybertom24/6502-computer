@@ -1,0 +1,24 @@
+Reset sequence:
+	RS  RW  D7  D6  D5  D4
+	0   0   0   0   1   1	init 8 bit interface
+	wait > 4.1ms
+	0   0   0   0   1   1	init 8 bit interface
+	wait > 100 us
+	0   0   0   0   1   1	init 8 bit interface
+	
+	0   0   0   0   1   0	init 4 bit interface
+
+	0   0   0   0   1   0	Setting number of lines and font size
+	0   0   N1  F0  0   0	(N: 0 = 1 line, 1 = 2 lines) (F: 0 = 5x8, 1 = 5x10)
+
+	0   0   0   0   0   0	Display off
+	0   0   1   0   0   0
+
+	0   0   0   0   0   0	Clear
+	0   0   0   0   0   1
+
+	0   0   0   0   0   0	Entry mode set
+	0   0   0   1   ID1 S0	(I/D: 0 = decrement, 1 = increment) (S: 0 = no shift, 1 = shift)
+	
+	0   0   0   0   0   0	Display control
+	0   0   1   D1  C1  B1	(D: 0 = display off, 1 = display on) (C: 0 = cursor off, 1 = cursor on) (B: 0 = no blinking, 1 = blinking)

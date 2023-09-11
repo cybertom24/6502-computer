@@ -1,0 +1,3 @@
+#!/usr/bin/zsh
+
+wine 6502.exe &;

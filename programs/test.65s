@@ -1,0 +1,18 @@
+; --- Test compilatore ---
+
+ include "./util/libs.65s"
+ 
+start:
+    LDA #$FF
+    STA DDRA        ; Imposta a OUTPUT
+    STA PORTA       ; Imposta tutti a HIGH -> i led si spengono
+
+reset:
+    LDA #0b11111110 ; Tieni acceso solo il led in A0
+loop:
+    STA PORTA
+    ASL             ; Shifta a sx -> 11111100
+    ORA #1          ; Aggiungi 1 in fondo -> 11111101
+    CMP #$FF        ; Se siamo arrivati a 11111111 (shiftato l'ultimo)
+    BEQ reset
+    JMP loop

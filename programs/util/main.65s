@@ -1,35 +1,51 @@
-; --- MAIN ---
-; This file contains all costants that represents important addresses, info, etc...
+; --- main.65s ---
+
+ ifndef MAIN_65s
+MAIN_65s
 
 ; RAM
-RAM_start 	= 0
-RAM_end 	= $3FFF
+RAM_start = 0
+RAM_end   = 0x3FFF
 
 ; ROM
-ROM_start 	= $8000
-ROM_end		= $FFFF
+ROM_start    = 0x8000
+ROM_end      = 0xFFFF
+START_VECTOR = 0xFFFC
+NMI_VECTOR   = 0xFFFE
 
 ; 6522
-VIA_start = $4000
-PORTB 	= VIA_start + 0
-PORTA 	= VIA_start + 1
-DDRB 	= VIA_start + 2
-DDRA 	= VIA_start + 3
-T1C_L 	= VIA_start + 4
-T1C_H 	= VIA_start + 5
-T1L_L 	= VIA_start + 6
-T1L_H 	= VIA_start + 7
-T2C_L 	= VIA_start + 8
-T2C_H 	= VIA_start + 9
-SR	= VIA_start + 10
-ACR	= VIA_start + 11
-PCR	= VIA_start + 12
-IFR	= VIA_start + 13
-IER	= VIA_start + 14
-PORTA_2	= VIA_start + 15
-OUTPUT	= 1
-INPUT	= 0
+VIA_start = 0x4000
+PORTB     = VIA_start + 0
+PORTA     = VIA_start + 1
+DDRB      = VIA_start + 2
+DDRA      = VIA_start + 3
+T1C_L     = VIA_start + 4
+T1C_H     = VIA_start + 5
+T1L_L     = VIA_start + 6
+T1L_H     = VIA_start + 7
+T2C_L     = VIA_start + 8
+T2C_H     = VIA_start + 9
+SR        = VIA_start + 10
+ACR       = VIA_start + 11
+PCR       = VIA_start + 12
+IFR       = VIA_start + 13
+IER       = VIA_start + 14
+PORTA_2   = VIA_start + 15
+OUTPUT    = 1
+INPUT     = 0
+
+; Here to create blank space
+ org RAM_start
+ 
+; Add the start vector and the NMI vector
+ org START_VECTOR
+ word ROM_start
+
+ org NMI_VECTOR
+ word ROM_start
 
 ; Add the origin here so there is no need to calculate the offsets
- .ORG ROM_start
+ org ROM_start
  JMP start
+
+ endif

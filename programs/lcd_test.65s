@@ -1,27 +1,31 @@
 ; --- LCD TEST ---
 ; This program is used to test the subroutines for the LCD
 
- .INCLUDE "C:\Users\savol\Documents\CyberIndustries\Progetti\6502-computer\programs\util\lcd.65s"
+ include "./util/libs.65s"
  
 message:
- .DB "CyberTom_24", 0 
+ byte "@gig.savo", 0 
 
- .START start
-start:
- JSR LCD_init		; Initialize the LCD
- LDA # LCD_DISPLAY | LCD_CURSOR | LCD_BLINK | LCD_LED	; Enable display, cursor, blinking and the led
- JSR LCD_setDisplay	; Control the display option
- 
- LDY #-1		; Use the Y register as a counter
+start:    
+    JSR LCD_init                    ; Initialize the LCD
+    LDA # LCD_DISPLAY | LCD_CURSOR | LCD_BLINK | LCD_LED    ; Enable display, cursor, blinking and the led
+    JSR LCD_setDisplay              ; Control the display option
+
+    LDA #100
+    JSR DELAY_10ms                  ; Wait 100 * 10 ms = 1000 ms = 1 s
+
+    LDY #-1                         ; Use the Y register as a counter
 print_loop:
- INY
- LDA message, Y		; Load the next character
- CMP #0			; Control if the character is '\0' or is valid
- BEQ print_loop_end	; If it's '\0' exit the loop
- JSR LCD_print		; Else print the char
- JMP print_loop		; Continue the loop
+    INY
+    LDA message, Y                  ; Load the next character
+    CMP #0                          ; Control if the character is '\0' or is valid
+    BEQ print_loop_end              ; If it's '\0' exit the loop
+    JSR LCD_print                   ; Else print the char
+    
+    LDA #100                        
+    JSR DELAY_ms                    ; Wait 100ms between all characters
+
+    JMP print_loop                  ; Continue the loop
+
 print_loop_end:
- JMP print_loop_end
- 
-  
- 
+    JMP print_loop_end

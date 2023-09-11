@@ -3,25 +3,48 @@
 ; All of those subroutines are based on a 1MHz clock. If the frequency changes all calculations
 ; must be updated
 
- .INCLUDE "C:\Users\savol\Documents\CyberIndustries\Progetti\6502-computer\programs\util\main.65s"
-
-
 ; Wait for the number of milliseconds specified in the A register 
 DELAY_ms:
- PHX
+    PHX
 
-DELAY_loop_ms_1:
- LDX #142		; The wait cicle uses 7 CPU cicles. To get the 142 you need to devide the number of CPU cicles in a ms by 7
-DELAY_loop_ms_2:
- DEX
- CPX #0
- BNE DELAY_loop_ms_2
+.DELAY_loop_ms_1:
+    LDX #142                ; The wait cicle uses 7 CPU cicles. To get the 142 you need to devide the number of CPU cicles in a ms by 7
+.DELAY_loop_ms_2:
+    DEX
+    CPX #0
+    BNE .DELAY_loop_ms_2
  
- DEA
- CMP #0
- BNE DELAY_loop_ms_1
+    DEA                     ; Decrement A
+    BNE .DELAY_loop_ms_1    ; "CMP #0" is made in automatic
  
- PLX
- RTS
+    PLX
+    RTS
  
 ; -------------------------------------------------------------------------------------------------------
+
+; Wait for (number inside A register * 10) microseconds
+DELAY_10us:
+    CMP #0                  ; Make a comparison
+.DELAY_10us_loop:
+    BEQ .DELAY_10us_end     ; "CMP #0" is made in automatic when A is updated
+    CMP 0                   ; Lose 3 cycle times (use zero-page adressing mode)
+    DEA                     
+    JMP .DELAY_10us_loop
+.DELAY_10us_end:
+    RTS
+    
+; -------------------------------------------------------------------------------------------------------
+
+; Wait for (number inside A register * 10) milliseconds
+DELAY_10ms:
+    CMP #0                  ; Make a comparison
+.DELAY_10ms_loop:
+    BEQ .DELAY_10ms_end     ; End the loop when 0 is reached
+    PHA                     ; Save the state of A
+    LDA #10
+    JSR DELAY_ms            ; Wait 10 ms
+    PLA                     ; Retrieve A
+    DEA                     ; A--
+    JMP .DELAY_10ms_loop
+.DELAY_10ms_end:
+    RTS

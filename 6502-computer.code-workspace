@@ -1,0 +1,17 @@
+{
+	"folders": [
+        {
+            "name": "6502-computer",
+            "path": "."
+        },
+        {
+            "name": "Clock",
+            "path": "script/Clock"
+        },
+        {
+            "name": "arduino-code",
+            "path": "../eeprom_programmer/arduino-code"
+        }
+    ],
+    "settings": {}
+}

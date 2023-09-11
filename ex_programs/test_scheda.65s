@@ -1,0 +1,29 @@
+; --- TEST SCHEDA ---
+
+ .INCLUDE "/home/cyber/Documents/CyberIndustries/Progetti/6502-computer/programs/util/lcd.65s"
+ 
+ .START start
+ 
+start:
+ LDA #$FF	; Imposta tutti i pin della PORTA a OUTPUT
+ STA DDRA
+ STA PORTA
+ 
+ LDX #0
+print_ram:
+ TXA
+ STA 0,X	; Save in the zero page
+ INX
+ CPX #16
+ BEQ reset
+ JMP print_ram
+ 
+reset:
+ LDX #0
+loop_1:
+ LDA 0,X
+ STA PORTA	; Imposta lo stato di PORTA pari al numero
+ INX		; Incrementa A
+ CPX #16	; Confronta con 16
+ BEQ reset 
+ JMP loop_1

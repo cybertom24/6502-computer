@@ -1,0 +1,1 @@
+This folder contains all the files that are used to store costants, subroutines and other things pre-build to add to the various programs

@@ -1,0 +1,351 @@
+; --- LCD ---
+; This file is used to setup and provide subroutines to control the LCD display
+;
+; IMPORTANT:
+; Wait at least 15ms after power-up before initilazing the LCD
+
+; N = 0 for 1 line
+;   = 1 for 2 lines
+; F = 0 for 5x8
+;   = 1 for 5x10
+; I/D = 0 for decrement
+;     = 1 for increment
+; S = 1 which accompanies display shift
+
+ .INCLUDE "/home/cyber/Documents/CyberIndustries/Progetti/6502-computer/programs/util/ram.65s"
+ .INCLUDE "/home/cyber/Documents/CyberIndustries/Progetti/6502-computer/programs/util/delay.65s" 
+ 
+; public:
+  ; util:
+LCD_rows = 16
+LCD_columns = 2
+delay = 10
+  ; pin (all on port A of the 65C22):
+LCD_pin_RS  = 0		; PA0
+LCD_pin_RW  = 1		; PA1
+LCD_pin_E   = 2		; PA2
+LCD_pin_LED = 3		; PA3
+LCD_pin_D4  = 4		; PA4
+LCD_pin_D5  = 5		; PA5
+LCD_pin_D6  = 6		; PA6
+LCD_pin_D7  = 7		; PA7
+
+LCD_RS  = 1 << LCD_pin_RS
+LCD_RW  = 1 << LCD_pin_RW
+LCD_E   = 1 << LCD_pin_E
+LCD_LED = 1 << LCD_pin_LED
+LCD_D4  = 1 << LCD_pin_D4
+LCD_D5  = 1 << LCD_pin_D5
+LCD_D6  = 1 << LCD_pin_D6
+LCD_D7  = 1 << LCD_pin_D7
+
+LCD_INIT_SEQ:
+ .DB LCD_D4 | LCD_D5
+ .DB LCD_D4 | LCD_D5
+ .DB LCD_D4 | LCD_D5
+ .DB LCD_D5
+ .DB LCD_D5
+ .DB LCD_D7		; LED, N = 1 (at D7), F = 0 (at D6)
+ .DB 0
+ .DB LCD_D7
+ .DB 0
+ .DB LCD_D4
+ .DB 0
+ .DB LCD_LED | LCD_D5 | LCD_D6	; LED, S = 0 (at D4), I/D = 1 (at D5) 
+LCD_INIT_SEQ_end:
+LCD_INIT_SEQ_length = LCD_INIT_SEQ_end - LCD_INIT_SEQ 
+
+; -------------------------------------------------------------------------------------------------------
+
+; Write the data placed inside the A register to the LCD
+LCD_write:
+ PHX		; Save the state of X
+ 
+ TAX		; Copy the data into X register
+ ORA #LCD_E	; Add the E signal
+ STX PORTA	; Data set with E = 0
+ STA PORTA	; Data set with E = 1
+ STX PORTA	; Data set with E = 0
+ 
+ PLX		; Retrieve the state of X
+ 
+ RTS
+
+; -------------------------------------------------------------------------------------------------------
+
+; Initialize the LCD
+LCD_init:
+ PHA			; Save the state of A, X and Y
+ PHX
+ PHY
+ 
+ LDA #$FF		; All port A pins to output
+ STA DDRA
+ 
+ LDA LCD_INIT_SEQ
+ JSR LCD_write
+ 
+ ; Wait at least 4.1ms
+ LDA 5
+ JSR DELAY_ms
+ 
+ LDA LCD_INIT_SEQ + 1
+ JSR LCD_write
+ 
+ ; Wait at least 10Us
+ LDA 1
+ JSR DELAY_ms
+ 
+ LDA LCD_INIT_SEQ + 2
+ JSR LCD_write
+ 
+ LDY #2
+.init_loop:
+ INY			; Y++
+ CPY #LCD_INIT_SEQ_length	; Compare Y and the length of the sequence
+ BCS .init_loop_end	; Branch if Y >= length
+ LDA LCD_INIT_SEQ, Y	; Else load the next byte using Y as an offset
+ JSR LCD_write
+ JMP .init_loop		; Go back and continue the loop
+.init_loop_end:
+
+ PLY			; Retrieve the state of A, X and Y
+ PLX
+ PLA
+
+ RTS
+ 
+; -------------------------------------------------------------------------------------------------------
+
+LCD_BLINK = LCD_D4
+LCD_CURSOR = LCD_D5
+LCD_DISPLAY = LCD_D6
+
+LCD_DISPLAY_0 = 0
+LCD_DISPLAY_1 = LCD_D7
+
+; Control the display by setting flags in the A register
+; Use the costants LCD_CURSOR, LCD_DISPLAY, LCD_BLINK and LCD_LED
+LCD_setDisplay:
+ STA LCD_flags		; Update LCD flags saved into the memory
+ PHA			; Save the flags into the stack 
+ AND #LCD_LED		; Estrapolate the led flag
+ STA LCD_led_flag	; Save it into the led flag
+ 
+ LDA #LCD_DISPLAY_0	; Write the first byte
+ JSR LCD_write
+ PLA			; Retrieve the flags
+ ORA #LCD_DISPLAY_1	; Add the bit (Display code: (RS RW D7 D6 D5 D4 = 0 0 1 D C B)
+ JSR LCD_write
+ RTS
+ 
+; -------------------------------------------------------------------------------------------------------
+
+LCD_PRINT = LCD_LED | LCD_RS
+
+; Print the character saved into the A register to the LCD
+LCD_print:
+ ; First the 4 MSBs of the character
+ PHA			; Copy the A register into the stack
+ AND #@11110000		; Get the 4 MSBs of the char
+ ORA #LCD_PRINT		; Add the command for printing
+ JSR LCD_write		; Write the data
+ 
+ ; Now the 4 LSBs
+ PLA			; Retrieve the char
+ ASL			; Shift to the left the bits of the character
+ ASL
+ ASL
+ ASL
+ ORA #LCD_PRINT		; Add the command
+ JSR LCD_write		; Write the data
+ 
+ RTS			; Return
+
+; -------------------------------------------------------------------------------------------------------
+
+; Print the number saved inside the A register in base 10
+LCD_printNumber:
+ PHA			; Save the A value
+ LDA #0
+ STA LCD_numBuffer	; Initialize the numBuffer to all zero
+ STA LCD_numBuffer + 1
+ STA LCD_numBuffer + 2
+ PLA			; Retrieve the value
+ 
+ CLD			; Operate in 2-complements mode and not in BCD
+ SEC			; Clear borrow flag
+ ; Find the value of the hundreds digit
+.hundreds:
+ CMP #100		; Compare A with 100
+ BCC .tens		; Jump if A < 100
+ INC LCD_nb_hundreds	; Increment the value of the hundreds
+ SEC
+ SBC #100		; Subtract 100 from A
+ JMP .hundreds		; Continue the loop
+ 
+ ; Find the value of the tens digit
+.tens:
+ CMP #10
+ BCC .units		; Jump if A < 10
+ INC LCD_nb_tens
+ SEC
+ SBC #10
+ JMP .tens
+ 
+ ; Copy the value of the units digit
+.units:
+ STA LCD_nb_units
+ 
+ ; Now all digits are saved in different RAM cells
+ LDA LCD_nb_hundreds		; Load the hundreds digit
+ CMP #0				; If it's zero do not print it
+ BEQ .print_tens_no_hundreds
+ CLC
+ ADC #'0'			; Transform the number into the character
+ JSR LCD_print			; Print the character
+ 
+.print_tens_with_hundreds
+ LDA LCD_nb_tens		; Load the next digit and print it
+ CLC
+ ADC #'0'
+ JSR LCD_print
+ JMP .print_units
+
+.print_tens_no_hundreds
+ LDA LCD_nb_tens		; Since there is no hundreds, if there is no tens do not print it
+ CMP #0
+ BEQ .print_units
+ CLC
+ ADC #'0'
+ JSR LCD_print
+
+.print_units:
+ LDA LCD_nb_units		; Load the last digit
+ CLC
+ ADC #'0'
+ JSR LCD_print
+ 
+ ; Return
+ RTS
+
+
+; -------------------------------------------------------------------------------------------------------
+
+; Use the value inside A to determine if the blinking should be enabled or not
+LCD_setBlink:
+ CMP #0			; 0 = false, any other number will enable blinking
+ BEQ .no_blink
+.yes_blink:
+ LDA LCD_flags		; Load all flags
+ ORA #LCD_BLINK		; Change to true the BLINK flag
+ JSR LCD_setDisplay	; Update the display
+ RTS
+.no_blink:
+ LDA LCD_flags
+ AND #~LCD_BLINK
+ JSR LCD_setDisplay
+ RTS
+ 
+; -------------------------------------------------------------------------------------------------------
+
+; Use the value inside A to determine if the cursor should be enabled or not
+LCD_setCursor:
+ CMP #0			; 0 = false, any other number will enable blinking
+ BEQ .no_cursor
+.yes_cursor
+ LDA LCD_flags		; Load all flags
+ ORA #LCD_CURSOR	; Change the cursor's flag
+ JSR LCD_setDisplay	; Update the display
+ RTS
+.no_cursor:
+ LDA LCD_flags
+ AND #~LCD_CURSOR
+ JSR LCD_setDisplay
+ RTS
+
+; -------------------------------------------------------------------------------------------------------
+
+LCD_CLEAR_0 = 0			; D7..D4
+LCD_CLEAR_1 = LCD_D4		; D3..D0 (D4 == D0)
+
+; Clears the display from all characters
+LCD_clear:
+ LDA #LCD_CLEAR_0
+ ORA LCD_led_flag
+ JSR LCD_write
+ 
+ LDA #LCD_CLEAR_1
+ ORA LCD_led_flag
+ JSR LCD_write
+ 
+ RTS
+ 
+; -------------------------------------------------------------------------------------------------------
+
+LCD_HOME_0 = 0
+LCD_HOME_1 = LCD_D5
+
+; Clears the display from all characters
+LCD_home:
+ LDA #LCD_HOME_0
+ ORA LCD_led_flag
+ JSR LCD_write
+ 
+ LDA #LCD_HOME_1
+ ORA LCD_led_flag
+ JSR LCD_write
+ 
+ RTS
+ 
+; -------------------------------------------------------------------------------------------------------
+
+LCD_MOVE_CURSOR_0 = LCD_D4
+LCD_MOVE_CURSOR_1 = 0		; If D7 = 1 it shifts the display, if it's 0 it shifts the cursor
+
+; Moves the cursor Left-Right by the amount specified into the A register.
+; Negative values move the cursor left, whereas positive values move it to the right
+LCD_moveCursor_LR:
+ PHX
+ 
+ CMP #128			; In 2-complements mode, numbers before 127 [0..127] is considered positive and inside [128...255] are considered negative
+ BCS .move_left			; If A < 0 go to move_left (A >= 128 -> -128 <= A < 0)
+.move_right:
+ TAX
+ LDA # LCD_MOVE_CURSOR_1 | LCD_D6	; Right has the D2 bit HIGH
+ JMP .move_cursor_LR_loop
+.move_left:				; Left has all bits LOW
+ EOR #$FF			; Flip all the bits
+ INA				; A++. This has the same effect as multiplying by -1
+ TAX
+ LDA # LCD_MOVE_CURSOR_1
+ 
+.move_cursor_LR_loop:
+ DEX
+ CPX #128			; Same thing for the negative numbers applies here
+ BCS .move_cursor_LR_loop_end	; Jump if X >= 128 -> X < 0
+ PHA
+ LDA #LCD_MOVE_CURSOR_0
+ ORA LCD_led_flag
+ JSR LCD_write
+ PLA
+ ORA LCD_led_flag
+ JSR LCD_write
+ JMP .move_cursor_LR_loop
+
+.move_cursor_LR_loop_end:
+ PLX
+ RTS
+ 
+; -------------------------------------------------------------------------------------------------------
+
+; Changes the cursor's row
+LCD_moveCursor_UD:
+ PHA
+ LDA #40			; If the cursor moves by 40 cells it will change row
+ JSR LCD_moveCursor_LR
+ PLA
+ 
+ RTS
+ 
+; -------------------------------------------------------------------------------------------------------

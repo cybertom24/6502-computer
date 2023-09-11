@@ -1,0 +1,27 @@
+; --- DELAY ---
+; This file contains subroutines to let the system wait for some time
+; All of those subroutines are based on a 1MHz clock. If the frequency changes all calculations
+; must be updated
+
+ .INCLUDE "/home/cyber/Documents/CyberIndustries/Progetti/6502-computer/programs/util/main.65s"
+
+
+; Wait for the number of milliseconds specified in the A register 
+DELAY_ms:
+ PHX
+
+DELAY_loop_ms_1:
+ LDX #142		; The wait cicle uses 7 CPU cicles. To get the 142 you need to devide the number of CPU cicles in a ms by 7
+DELAY_loop_ms_2:
+ DEX
+ CPX #0
+ BNE DELAY_loop_ms_2
+ 
+ DEA
+ CMP #0
+ BNE DELAY_loop_ms_1
+ 
+ PLX
+ RTS
+ 
+; -------------------------------------------------------------------------------------------------------

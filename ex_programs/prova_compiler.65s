@@ -1,0 +1,5 @@
+; File di prova per il compilatore
+
+ciao: 
+    STA 10
+    LDA 100

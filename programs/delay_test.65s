@@ -1,12 +1,18 @@
-; --- DELAY TEST ---
+; --- delay_test.65s ---
 
+ include "./util/libs.65s"
 
- .INCLUDE "C:\Users\savol\Documents\CyberIndustries\Progetti\6502-computer\programs\util\delay.65s"
- 
- .START start
- 
 start:
- LDA #100
- JSR DELAY_ms
- LDA #1
- BRK
+    LDA #0xFF
+    STA DDRB
+
+loop:
+    LDA #0
+    STA PORTB
+    LDA #1           ; 1ms of delay
+    JSR DELAY_ms
+    LDA #0xFF
+    STA PORTB
+    LDA #1
+    JSR DELAY_ms    ; 1ms of delay
+    JMP loop

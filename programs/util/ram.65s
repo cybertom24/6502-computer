@@ -1,4 +1,4 @@
-; --- RAM ---
+; --- ram.65s ---
 ; This file contains RAM addresses shared between files and programs, subroutines to allocate memory and other tasks
 
 ; Useful costants
@@ -12,21 +12,21 @@ MEMORY_start = STACK_end + 1
 MEMORY_end   = $3FFF
 
 ; Use this list to allocate memory for various tasks
- .ORG MEMORY_start
+ org MEMORY_start
 
-LCD_flags:	; Contains flags for cursor blinking, display shifting, etc...
- .DB $FA
+LCD_flags:  ; Contains flags for cursor blinking, display shifting, etc...
+ byte $FA
 
-LCD_led_flag:	; A flag that indicates if the LED of the LCD is on. Can only be 0 or LCD_LED (@00010000) 
- .DB 0
+LCD_led_flag:   ; A flag that indicates if the LED of the LCD is on. Can only be 0 or LCD_LED (@00010000) 
+ byte 0
 
-LCD_numBuffer:	; Used to contain the digits of the number to be displayed
+LCD_numBuffer:  ; Used to contain the digits of the number to be displayed
 LCD_nb_hundreds: 
- .DB 0
+ byte 0
 LCD_nb_tens:
- .DB 0
+ byte 0
 LCD_nb_units:
- .DB 0
+ byte 0
  
-temp:		; 16-byte place for temporary variables which can be used by the programs 
- .RS 16
+temp:           ; 16-byte place for temporary variables which can be used by the programs 
+ byte 16
