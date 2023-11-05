@@ -1,10 +1,12 @@
 ; --- LCD TEST ---
 ; This program is used to test the subroutines for the LCD
 
- include "./util/libs.65s"
+    include "./util/libs.65s"
  
-message:
- byte "@gig.savo", 0 
+message_1:
+    byte "@gig.savo", 0 
+message_2:
+    byte "IlBuonCode", 0
 
 start:    
     JSR LCD_init                    ; Initialize the LCD
@@ -14,18 +16,24 @@ start:
     LDA #100
     JSR DELAY_10ms                  ; Wait 100 * 10 ms = 1000 ms = 1 s
 
+    LCD_printString message_1       ; Use te macro to print the string
+
+    JSR LCD_home                    ; Set the cursor position to 0,0
+    JSR LCD_moveCursor_UD           ; Move the cursor down
+    
     LDY #-1                         ; Use the Y register as a counter
-print_loop:
+print_loop_2:
     INY
-    LDA message, Y                  ; Load the next character
+    LDA message_2, Y                  ; Load the next character
     CMP #0                          ; Control if the character is '\0' or is valid
-    BEQ print_loop_end              ; If it's '\0' exit the loop
+    BEQ print_loop_end_2              ; If it's '\0' exit the loop
     JSR LCD_print                   ; Else print the char
     
     LDA #100                        
     JSR DELAY_ms                    ; Wait 100ms between all characters
 
-    JMP print_loop                  ; Continue the loop
+    JMP print_loop_2                  ; Continue the loop
+print_loop_end_2:
 
-print_loop_end:
-    JMP print_loop_end
+final_loop:
+    JMP final_loop

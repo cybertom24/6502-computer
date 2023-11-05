@@ -31,6 +31,9 @@ PCR       = VIA_start + 12
 IFR       = VIA_start + 13
 IER       = VIA_start + 14
 PORTA_2   = VIA_start + 15
+T1C       = T1C_L
+T1L       = T1L_L
+T2C       = T2C_L
 OUTPUT    = 1
 INPUT     = 0
 

@@ -1,0 +1,53 @@
+; --- char.65s ---
+; Library to manage characters
+
+; ASCII structure
+; 0b000xxxxx = commands
+; 0b0010xxxx = symbols
+; 0b0011xxxx = start digits
+; 0b010xxxxx = uppercase letters (A = 0b01000001)
+; 0b011xxxxx = lowercase letters (a = 0b01100001)
+; 0b1xxxxxxx = extended table
+;
+; Utils:
+; bit 5 controls uppercase / lowercase, 1 = lowercase, 0 = uppercase
+
+CHAR_CASE_BIT    = 0b00100000
+CHAR_START_DIGIT = #'0'
+
+
+; Macros
+
+; Set letter inside A to uppercase
+CHAR_toUppercase:
+macro
+    AND #~CHAR_CASE_BIT         ; Set case bit to 0
+endm
+
+; Set letter inside A to lowercase
+CHAR_toLowercase:
+macro
+    ORA #CHAR_CASE_BIT          ; Set case bit to 1
+endm
+
+; A = 0 if it's uppercase, A = 1 if it's lowercase
+CHAR_getCase:
+macro
+    AND #CHAR_CASE_BIT          ; Get the case bit
+endm
+
+; Subroutines
+
+; Convert from digit to character
+CHAR_toCharacter:
+    AND #0b00001111             ; Mask it
+    CMP #10
+    BMI .number                 ; Branches if A < 10 -> Character to be print is a number
+    .letter:
+        CLC                     ; Clear carry flag
+        ADC # 'A' - 10
+        RTS
+    .number:
+        CLC
+        ADC #'0'
+        RTS

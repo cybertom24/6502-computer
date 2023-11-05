@@ -27,6 +27,14 @@ LCD_nb_tens:
  byte 0
 LCD_nb_units:
  byte 0
+
+TIME_micros:        ; Contains how many microseconds had passed after TIME_micros_init was called. It is updated by TIME_micros_update
+TIME_micros_L:
+ byte 0
+TIME_micros_H:
+ byte 0
  
 temp:           ; 16-byte place for temporary variables which can be used by the programs 
- byte 16
+ repeat 16
+    byte 0
+ endrepeat

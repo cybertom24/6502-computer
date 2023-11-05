@@ -11,7 +11,12 @@
         {
             "name": "arduino-code",
             "path": "../eeprom_programmer/arduino-code"
+        },
+        {
+            "path": "programs"
         }
     ],
-    "settings": {}
+    "settings": {
+        "files.associations": { "*.65s": "retroasm_65c02" }
+    }
 }

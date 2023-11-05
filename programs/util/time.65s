@@ -1,0 +1,120 @@
+; --- time.65s ---
+; There are two indipendent 16bit timers on the 65C22: T1 AND T2
+; They are controlled by the Auxiliary Control Register (ACR)
+
+; < T1 >
+; Consist of two 8bit latches (T1L -> T1L_L (low 8 bits) + T1L_H (high 8 bits)) which store data that will be written 
+; inside a 16bit counter (T1C -> T1C_L + T1C_H)
+; When T1C reaches 0 an interrupt may be raised (if the ACR says so) AND the timer will be loaded with the data inside T1L
+; Additionally PB7 can be inverted when the interrupt is raised
+; T1 can be in two different modes:
+; - One-shot mode
+;       When T1C (specifically T1C_H) is loaded the timer starts ticking down AND when reaches 0 it sends an interrupt.
+;       After that the timer will keep ticking down but no interrupts will be raised until T1C_H is written to again
+; - Free-run mode
+;       Each time T1 reaches 0 it raises an interrupt AND then reset itself to the value inside T1L
+
+; The Interrupt Enable Register can be used to forward the interrupts raised by the timers to the CPU by controlling the IRQ
+; line. If the flag is not set (0) the interrupt is disabled.
+
+IE_TIMER2 = 0b00100000
+IE_TIMER1 = 0b01000000
+
+; Enables / disables interrupts raised by T1 reaching 0 
+TIME_set_int_T1:
+    CMP #0                  ; If A = 0 disable interrupt
+    BEQ .disable_int_T1
+.enable_int_T1:
+    LDA #IE_TIMER1
+    ORA IER                 ; Set the flag
+    STA IER
+    RTS
+.disable_int_T1
+    LDA #IE_TIMER1
+    EOR #$FF                ; Invert all bits
+    AND IER                 ; Clear the flag
+    STA IER
+    RTS
+    
+; ------------------------------------------------------------------------------------------------------------------------------
+
+; Enables / disables interrupts raised by T2 reaching 0 
+TIME_set_int_T2:
+    CMP #0                  ; If A = 0 disable interrupt
+    BEQ .disable_int_T2
+.enable_int_T2:
+    LDA #IE_TIMER2
+    ORA IER                 ; Set the flag
+    STA IER
+    RTS
+.disable_int_T2:
+    LDA #IE_TIMER2
+    EOR #$FF                ; Invert all bits
+    AND IER                 ; Clear the flag
+    STA IER
+    RTS
+    
+; ------------------------------------------------------------------------------------------------------------------------------
+
+T1_MODE    = 0b01000000         ; 0 = one-shot, 1 = free-run
+
+; Set T1 as free-run mode
+TIME_T1_free_run:
+    PHA
+    LDA #T1_MODE
+    ORA ACR
+    STA ACR
+    PLA
+    RTS
+
+; ------------------------------------------------------------------------------------------------------------------------------
+
+PB7_OUTPUT = 0b10000000         ; 0 = disabled, 1 = enabled
+
+; Set PB7 output
+TIME_set_PB7_out:
+    CMP #0
+    BEQ .disable_PB7_out        ; Disable if A == 0, else enable
+.enable_PB7_out:
+    LDA #PB7_OUTPUT
+    ORA ACR
+    STA ACR
+    RTS
+.disable_PB7_out:
+    LDA #PB7_OUTPUT
+    EOR #$FF
+    AND ACR
+    STA ACR
+    RTS
+
+; ------------------------------------------------------------------------------------------------------------------------------
+
+; Starts counting microseconds
+TIME_micros_init:
+    LDA #0
+    JSR TIME_set_int_T1     ; Disable T1 interrupts
+    JSR TIME_T1_free_run    ; Set T1 as free-run mode
+    LDA #0
+    JSR TIME_set_PB7_out    ; Disable PB7 output
+    LDA #$FF
+    STA T1L_L
+    STA T1L_H               ; Set the reset value of T1 as the highest number possible
+    ; Now T1 is ticking
+    RTS
+    
+; ------------------------------------------------------------------------------------------------------------------------------
+
+; Read how many microseconds had passed since "TIME_micros_init" was called
+; Result is saved in 16bit address TIME_micros
+TIME_micros_update:
+    PHA
+    
+    LDA T1C_L
+    STA TIME_micros_L       ; Read the low 8 bits
+    LDA T1C_H
+    STA TIME_micros_H       ; Read the high 8 bits
+    ; Sottrai da 0xFFFF il contenuto di TIME_micros
+    ; Salva il risultato sempre in TIME_micros
+
+    PLA
+    RTS

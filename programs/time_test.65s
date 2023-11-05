@@ -1,0 +1,22 @@
+; --- time_test.65s ---
+
+ include "./util/libs.65s"
+ 
+message:
+ byte "time_test", 0 
+
+start:    
+    JSR LCD_init                    ; Initialize the LCD
+    LDA # LCD_DISPLAY               ; Enable display
+    JSR LCD_setDisplay              ; Control the display option
+
+    LDY #-1                         ; Use the Y register as a counter
+print_loop:
+    INY
+    LDA message, Y                  ; Load the next character
+    CMP #0                          ; Control if the character is '\0' or is valid
+    BEQ print_loop_end              ; If it's '\0' exit the loop
+    JSR LCD_print                   ; Else print the char
+    JMP print_loop                  ; Continue the loop
+print_loop_end:
+    

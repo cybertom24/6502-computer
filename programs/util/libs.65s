@@ -6,3 +6,5 @@
  include "./util/math.65s"
  include "./util/delay.65s"
  include "./util/lcd.65s"
+ include "./util/time.65s"
+ ;include "./util/char.65s"
