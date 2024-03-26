@@ -14,6 +14,7 @@ MEMORY_end   = $3FFF
 ; Use this list to allocate memory for various tasks
  org MEMORY_start
 
+; LCD
 LCD_flags:  ; Contains flags for cursor blinking, display shifting, etc...
  byte $FA
 
@@ -28,12 +29,25 @@ LCD_nb_tens:
 LCD_nb_units:
  byte 0
 
+; TIME
 TIME_micros:        ; Contains how many microseconds had passed after TIME_micros_init was called. It is updated by TIME_micros_update
 TIME_micros_L:
  byte 0
 TIME_micros_H:
  byte 0
- 
+
+; Keyboard
+KBRD_inputBufferSize = 32
+KBRD_inputBuffer:       ; Input buffer for the keyboard interface
+ repeat KBRD_inputBufferSize
+    byte 0
+ endrepeat
+KBRD_inputBufferRead:   ; Points which is the next byte to read inside the input buffer
+ byte 0
+KBRD_inputBufferWrite:  ; Points which is the next byte to overwrite inside the input buffer
+ byte 0
+
+; Other
 temp:           ; 16-byte place for temporary variables which can be used by the programs 
  repeat 16
     byte 0

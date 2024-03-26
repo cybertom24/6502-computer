@@ -1,0 +1,102 @@
+; --- keyboard.65s ---
+; This file provides an interface with a PS/2 keyboard attached to PORT B. It shouldn't need any hardware support
+
+; Pins
+KBRD_pin_DATA = 0   ; PB 0
+KBRD_pin_CLK  = 1   ; PB 1
+
+KBRD_DATA = 1 << KBRD_pin_DATA
+KBRD_CLK  = 1 << KBRD_pin_CLK
+
+; The input buffer is defined in the ram.65s file
+
+; -------------------------------------------------------------------------------------------------------
+
+; Write inside the Accumulator how many bytes are available to read inside the input buffer
+KBRD_available:
+    CLD                         ; Disable BCD mode
+    
+    ; Check if write pointer has wrapped around AND is behind the read pointer
+    LDA KBRD_inputBufferWrite   ; Load inside A the write pointer
+    CMP KBRD_inputBufferRead    ; Compare with the read pointer
+    BMI .wrap                   ; Branch if negative (w < r)
+
+.no_wrap:
+    SEC                         ; Set carry (so it doesn't subract 1)
+    SBC KBRD_inputBufferRead    ; A = w - r 
+    
+    RTS
+    
+.wrap:
+    ; If r > w -> has wrapped around
+    LDA #KBRD_inputBufferSize   ; A = buffer size
+    SEC                         ; Set carry (so it doesn't subract 1)
+    SBC KBRD_inputBufferRead    ; A = buffer size - r
+    ADC KBRD_inputBufferWrite   ; A = (buffer size - r) + w
+    
+    RTS
+
+; -------------------------------------------------------------------------------------------------------
+
+; Load in A the next byte to read
+; If no data is available the A register is set to -1
+KBRD_read:
+    LDA KBRD_inputBufferRead    ; Check if there is data available
+    CMP KBRD_inputBufferWrite
+    BEQ .no_data                ; Branch if r == w
+
+.yes_data:
+    PHX
+    TAX                         ; A -> X (X = r)
+    LDA KBRD_inputBuffer,X      ; Load the byte ready to be read using X as relative index (it contains r pointer)
+    INX                         ; r++
+    CPX #KBRD_inputBufferSize   ; Compare r with buffer size
+    BNE .continue               ; r != size (so it's less than size) -> no wrap around
+
+    LDX #0                      ; r == size -> wrap around -> set r to 0
+    
+    .continue:
+    STX KBRD_inputBufferRead    ; Save the modified r pointer to its RAM location
+    
+    PLX                         ; Restore X register
+    RTS
+    
+.no_data
+    LDA #-1
+    
+    RTS
+    
+; -------------------------------------------------------------------------------------------------------
+
+; ! For testing purpose !
+; Writes the byte inside the Accumulator in the input buffer
+; If the buffer is full, data is overwritten only inside the last byte
+; (the one just before the read pointer)
+; This SBRT won't let a wrapped around write pointer surpass the read pointer
+; so if w < r -> w will remain < r
+; If overwrite has happened, A is set to -1
+KBRD_write:
+    PHX 
+    
+    LDX KBRD_inputBufferWrite   ; Load inside X the write pointer
+    STA KBRD_inputBuffer,X      ; Use X as relative index and store the byte
+    INX                         ; w++
+    CPX #KBRD_inputBufferSize
+    BNE .continue               ; No wrapping needed
+    
+    LDX #0                      ; Wrapping needed -> w set to 0
+
+.continue:
+    CPX KBRD_inputBufferRead    ; Compare the new w with r
+    BNE .no_overwrite           ; new w != r
+    
+    LDA #-1                     ; Overwrite -> do not change w inside RAM
+    
+    PLX
+    RTS
+    
+    .no_overwrite:
+        STX KBRD_inputBufferWrite   ; Update w pointer inside RAM
+        
+        PLX
+        RTS

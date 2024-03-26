@@ -1,7 +1,26 @@
 ; --- Test compilatore ---
 
- include "./util/libs.65s"
- 
+ include "./util/ram.65s"
+ include "./util/main.65s"
+ include "./util/keyboard.65s"
+
 start:
+    LDA #'c'
+    JSR KBRD_write
+    LDA #'i'
+    JSR KBRD_write
     LDA #'a'
-    JMP CHAR_toUppercase
+    JSR KBRD_write
+    LDA #'o'
+    JSR KBRD_write
+    
+    JSR KBRD_available
+    JSR KBRD_read
+    JSR KBRD_available
+    JSR KBRD_read
+    JSR KBRD_available
+    JSR KBRD_read
+    JSR KBRD_available
+    JSR KBRD_read
+    JSR KBRD_available
+    JSR KBRD_read

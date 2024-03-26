@@ -1,22 +1,16 @@
 {
 	"folders": [
         {
-            "name": "6502-computer",
             "path": "."
         },
         {
-            "name": "Clock",
-            "path": "script/Clock"
+            "name": "keyboard_protocol_arduino",
+            "path": "test/keyboard_protocol_arduino"
         },
         {
-            "name": "arduino-code",
-            "path": "../eeprom_programmer/arduino-code"
-        },
-        {
-            "path": "programs"
+            "name": "keyboard_protocol_reader",
+            "path": "test/keyboard_protocol_reader"
         }
     ],
-    "settings": {
-        "files.associations": { "*.65s": "retroasm_65c02" }
-    }
+	"settings": {}
 }
