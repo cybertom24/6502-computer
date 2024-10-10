@@ -391,7 +391,7 @@ LCD_moveCursor_UD:
 
 ; Prints the 4 less significant bits inside A as hex
 LCD_print4Hex:
-    JMP CHAR_toCharacter
+    JSR CHAR_toCharacter
     JSR LCD_print
     RTS
 
@@ -416,24 +416,24 @@ LCD_print8Hex:
 ; -------------------------------------------------------------------------------------------------------
 
 ; Prints the entire message. The string MUST terminate with '\0'!
-LCD_printString: macro address
+ macro LCD_printString,address
     PHY                             ; Save Y and A state
     PHA
 
     LDY #-1                         ; Use the Y register as a counter
-    .LCD_print_loop:
+    .LCD_print_loop\@:
         INY
-        LDA \address, Y                  ; Load the next character
+        LDA \address, Y                 ; Load the next character
         CMP #0                          ; Control if the character is '\0' or is valid
-        BEQ LCD_print_loop_end          ; If it's '\0' exit the loop
+        BEQ .LCD_print_loop_end\@       ; If it's '\0' exit the loop
         JSR LCD_print                   ; Else print the char
         
         LDA #100                        
         JSR DELAY_ms                    ; Wait 100ms between all characters
 
-        JMP LCD_print_loop              ; Continue the loop
-    .LCD_print_loop_end:
+        JMP .LCD_print_loop\@           ; Continue the loop
+    .LCD_print_loop_end\@:
     
     PLA
     PLY
-endm
+ endm

@@ -2,13 +2,103 @@
 ; This file provides an interface with a PS/2 keyboard attached to PORT B. It shouldn't need any hardware support
 
 ; Pins
-KBRD_pin_DATA = 0   ; PB 0
-KBRD_pin_CLK  = 1   ; PB 1
+KBRD_pin_DATA_OUT = 0   ; PB 0
+KBRD_pin_DATA_IN  = 1   ; PB 1
+KBRD_pin_CLK_IN   = 2   ; PB 2
+KBRD_pin_CLK_OUT  = 3   ; PB 3
 
-KBRD_DATA = 1 << KBRD_pin_DATA
-KBRD_CLK  = 1 << KBRD_pin_CLK
+KBRD_DATA_IN  = 1 << KBRD_pin_DATA_IN
+KBRD_DATA_OUT = 1 << KBRD_pin_DATA_OUT
+KBRD_CLK_IN   = 1 << KBRD_pin_CLK_IN
+KBRD_CLK_OUT  = 1 << KBRD_pin_CLK_OUT
+
+KBRD_OUTPUTS = KBRD_DATA_OUT | KBRD_CLK_OUT
+KBRD_INPUTS  = KBRD_DATA_IN  | KBRD_CLK_IN
+
+; Codes
+KBRD_WRONG_CODE = $FF
+KBRD_ACK = $FA
+KBRD_BAT_OK  = $AA
+KBRD_BAT_ERR = $FC
+KBRD_LONG_CODE = $0E
+KBRD_BREAK = $F0
+
+; KBRD status register flags
+KBRD_scrlLock = 0
+KBRD_numLock  = 1
+KBRD_capsLock = 2
+KBRD_SHIFT    = 3
+KBRD_CTRL     = 4
+KBRD_ALT      = 5
+KBRD_ALTGR    = 6
+
+KBRD_scrlLockMask = 1 << KBRD_scrlLock
+KBRD_numLockMask  = 1 << KBRD_numLock
+KBRD_capsLockMask = 1 << KBRD_capsLock
+
+
 
 ; The input buffer is defined in the ram.65s file
+
+; -------------------------------------------------------------------------------------------------------
+
+; MACRO: waits till the line is set to 0 (pulled down)
+ macro KBRD_waitPullDown,pin
+    PHA
+
+    .loop_waitPullDown\@:
+        LDA PORTB                   ; Load PORTB status
+        AND #\pin                   ; And with the pin mask
+        BNE .loop_waitPullDown\@    ; Continue the loop if the result is NOT 0 (so the pin is 1)
+    
+    PLA
+ endm
+
+; MACRO: waits till the line is set to 1 (released)
+ macro KBRD_waitRelease,pin
+    PHA
+
+    .loop_waitRelease\@:
+        LDA PORTB                   ; Load PORTB status
+        AND #\pin                   ; And with the pin mask
+        BEQ .loop_waitRelease\@     ; Continue the loop if the result is 0 (so the pin is 0)
+    
+    PLA
+ endm
+
+; MACRO: converts from byte code to character. The byte code must be put inside X AND the character
+;        will be put inside A
+ macro KBRD_convert
+    LDA KBRD_codeLUT,X
+ endm
+
+; -------------------------------------------------------------------------------------------------------
+
+; Initializes the keyboard and pins
+KBRD_init:
+    PHA
+    
+    LDA DDRB                    ; Load the DDRB configuration
+    ORA # KBRD_OUTPUTS          ; Set OUT pin to output (bit = 1)
+    AND # ~KBRD_INPUTS          ; Set IN pin to input (bit = 0)
+    STA DDRB
+    
+    ; Set both OUTPUTS to LOW
+    LDA PORTB
+    AND # ~KBRD_OUTPUTS         ; 0 = off, 1 = on
+    STA PORTB
+    
+    ; Clear input buffer
+    STZ KBRD_inputBufferRead
+    STZ KBRD_inputBufferWrite
+    ; Clear status register
+    STZ KBRD_status
+
+    ; Send reset code AND wait for the response
+
+    PLA
+    RTS
+
 
 ; -------------------------------------------------------------------------------------------------------
 
@@ -41,12 +131,13 @@ KBRD_available:
 ; Load in A the next byte to read
 ; If no data is available the A register is set to -1
 KBRD_read:
+    PHX
+    
     LDA KBRD_inputBufferRead    ; Check if there is data available
     CMP KBRD_inputBufferWrite
     BEQ .no_data                ; Branch if r == w
 
 .yes_data:
-    PHX
     TAX                         ; A -> X (X = r)
     LDA KBRD_inputBuffer,X      ; Load the byte ready to be read using X as relative index (it contains r pointer)
     INX                         ; r++
@@ -58,14 +149,17 @@ KBRD_read:
     .continue:
     STX KBRD_inputBufferRead    ; Save the modified r pointer to its RAM location
     
-    PLX                         ; Restore X register
-    RTS
+    JMP .exit
     
-.no_data
+.no_data:
     LDA #-1
     
+.exit:
+    TAX                         ; A -> X
+    LDA KBRD_codeLUT,X          ; Convert byte code to character
+    PLX
     RTS
-    
+
 ; -------------------------------------------------------------------------------------------------------
 
 ; ! For testing purpose !
@@ -92,11 +186,118 @@ KBRD_write:
     
     LDA #-1                     ; Overwrite -> do not change w inside RAM
     
-    PLX
-    RTS
+    JMP .exit
     
     .no_overwrite:
         STX KBRD_inputBufferWrite   ; Update w pointer inside RAM
         
-        PLX
-        RTS
+.exit:
+    PLX
+    RTS
+
+; -------------------------------------------------------------------------------------------------------
+
+; Loads in A the packet sent by the keyboard
+; This is a blocking subrutine. Waiting to be removed in favor of a proper ISR
+KBRD_readPacket:
+    PHX
+    PHY
+
+    ; Wait for the falling edge of the clock
+    KBRD_waitPullDown KBRD_CLK_IN
+
+    ; Check the start bit. It must be 0
+    LDA PORTB
+    AND # KBRD_DATA_IN
+    BNE .error
+    
+    ; Start bit is ok.
+    KBRD_waitRelease KBRD_CLK_IN
+    ; Now will come the data bits
+    STZ KBRD_packet             ; Clear memory
+    LDY #1                      ; Use Y as index
+    .loop:
+        KBRD_waitPullDown KBRD_CLK_IN
+        LDA PORTB               ; Load PORTB state
+        AND # KBRD_DATA_IN      ; mask
+        BEQ .zero               ; d = 0
+        .one:
+            TYA                     ; Y -> A
+            ORA KBRD_packet         ; Add the bit to the packet being read
+            STA KBRD_packet         ; Update the memory location
+        .zero:
+        ; Rotate Y to the left
+        TYA                     ; Y -> A
+        ASL                     ; Rotate A one bit to the left
+        TAY                     ; A -> Y
+        
+        KBRD_waitRelease KBRD_CLK_IN
+        
+        CPY #0
+        BNE .loop               ; Continue the loop if Y is not zero
+    
+    ; Now it's time for the parity BIT
+    KBRD_waitPullDown KBRD_CLK_IN
+    ; Do not read it (assume it's right)
+    KBRD_waitRelease KBRD_CLK_IN
+
+    ; Now the stop BIT (must be 1)
+    KBRD_waitPullDown KBRD_CLK_IN
+    ; Do not read it (assume it's right)
+    KBRD_waitRelease KBRD_CLK_IN
+
+    ; Recover the data
+    LDA KBRD_packet
+    JMP .exit
+
+.error:
+    LDA # KBRD_WRONG_CODE
+.exit:
+    JSR KBRD_write
+    PLY
+    PLX
+    RTS
+; -------------------------------------------------------------------------------------------------------
+
+; Look up table associating byte code to key characterù
+KBRD_codeLUT:
+;                              low nibble
+;    0   1   2   3   4   5   6   7   8   9   A   B   C   D   E   F  
+ db '?','?','?','?','?','?','?','?','?','?','?','?','?',$09,'\','?'  ; 0
+ db '?','?',$0E,'?','?','q','1','?','?','?','z','s','a','w','2','?'  ; 1
+ db '?','c','x','d','e','4','3','?','?',' ','v','f','t','r','5','?'  ; 2  h
+ db '?','n','b','h','g','y','6','?','?','?','m','j','u','7','8','?'  ; 3  i
+ db '?',',','k','i','o','0','9','?','?','.','-','l','@','p','?','?'  ; 4  g
+ db '?','?','#','?','[','^','?','?','?',$0F,$0A,'+','?','u','?','?'  ; 5  h
+ db '?','<','?','?','?','?',$08,'?','?','?','?','?','?','?','?','?'  ; 6  
+ db '?','?','?','?','?','?',$1B,'?','?','?','?','?','?','?','?','?'  ; 7  n
+ db '?','?','?','?','?','?','?','?','?','?','?','?','?','?','?','?'  ; 8  i
+ db '?','?','?','?','?','?','?','?','?','?','?','?','?','?','?','?'  ; 9  b
+ db '?','?','?','?','?','?','?','?','?','?','?','?','?','?','?','?'  ; A  b
+ db '?','?','?','?','?','?','?','?','?','?','?','?','?','?','?','?'  ; B  l
+ db '?','?','?','?','?','?','?','?','?','?','?','?','?','?','?','?'  ; C  e
+ db '?','?','?','?','?','?','?','?','?','?','?','?','?','?','?','?'  ; D
+ db '?','?','?','?','?','?','?','?','?','?','?','?','?','?','?','?'  ; E
+ db '@','?','?','?','?','?','?','?','?','?','?','?','?','?','?','#'  ; F
+
+
+KBRD_bcksp = $08
+KBRD_tab   = $09
+KBRD_newln = $0A
+KBRD_esc   = $1B
+KBRD_lshft = $0E
+KBRD_rshft = $0F
+KBRD_KP_0  = '0' | %10000000
+KBRD_KP_1  = '1' | %10000000
+KBRD_KP_2  = '2' | %10000000
+KBRD_KP_3  = '3' | %10000000
+KBRD_KP_4  = '4' | %10000000
+KBRD_KP_5  = '5' | %10000000
+KBRD_KP_6  = '6' | %10000000
+KBRD_KP_7  = '7' | %10000000
+KBRD_KP_8  = '8' | %10000000
+KBRD_KP_9  = '9' | %10000000
+KBRD_KP_ASTX  = '*' | %10000000
+KBRD_KP_MIN   = '-' | %10000000
+KBRD_KP_PLUS  = '+' | %10000000
+KBRD_KP_DOT   = '.' | %10000000

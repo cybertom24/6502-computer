@@ -11,7 +11,8 @@ RAM_end   = 0x3FFF
 ROM_start    = 0x8000
 ROM_end      = 0xFFFF
 START_VECTOR = 0xFFFC
-NMI_VECTOR   = 0xFFFE
+NMI_VECTOR   = 0xFFFA
+IRQ_VECTOR   = 0xFFFE
 
 ; 6522
 VIA_start = 0x4000
@@ -44,11 +45,17 @@ INPUT     = 0
  org START_VECTOR
  word ROM_start
 
+ org IRQ_VECTOR
+ word ISR
+
  org NMI_VECTOR
  word ROM_start
 
 ; Add the origin here so there is no need to calculate the offsets
  org ROM_start
- JMP start
+reset:
+    ; Clear RAM
+    JSR INTR_init
+    JMP start
 
  endif

@@ -1,0 +1,22 @@
+ include "./util/libs.65s"
+
+title:
+    byte "conta intr:",0
+
+start:
+    CLI                             ; Enable interrupts
+    STZ INTR_temp
+    JSR LCD_init                    ; Initialize the LCD
+    LDA # LCD_DISPLAY | LCD_LED    ; Enable display, cursor, blinking and the led
+    JSR LCD_setDisplay              ; Control the display option
+    
+    LCD_printString title
+
+loop:
+    JSR LCD_home
+    JSR LCD_moveCursor_UD
+    LDA INTR_temp
+    JSR LCD_printNumber
+    LDA #5
+    JSR DELAY_100ms                 ; Wait 500 ms
+    JMP loop

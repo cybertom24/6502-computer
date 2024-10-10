@@ -1,0 +1,29 @@
+; --- INPUT TEST ---
+
+ include "./util/libs.65s"
+
+title:
+    byte "input test:", 0
+
+start:    
+    JSR LCD_init                    ; Initialize the LCD
+    LDA # LCD_DISPLAY | LCD_LED
+    JSR LCD_setDisplay              ; Control the display option
+
+    LCD_printString title           ; Use te macro to print the string
+
+    JSR LCD_home                    ; Set the cursor position to 0,0
+    JSR LCD_moveCursor_UD           ; Move the cursor down
+
+    LDA #0                  
+    STA DDRB                        ; Set all pin of PORTB to input (0)
+
+loop:
+    LDA PORTB                       ; Read pin
+    JSR LCD_print8Hex               ; Print pin status as HEX
+    JSR LCD_home                    ; Restore cursor position
+    JSR LCD_moveCursor_UD
+    
+    LDA #50                         ; Wait 25 * 10ms = 500ms
+    JSR DELAY_10ms
+    JMP loop

@@ -1,0 +1,38 @@
+--- BETA pinout ---
+
+PORT-A:
+1  - VCC
+2  - GND 
+3  - CLK
+4  - PA0
+5  - PA1
+6  - PA2
+7  - PA3
+8  - PA4
+9  - PA5
+10 - PA6
+11 - PA7
+12 - CA1
+13 - CA2
+
+PORT-B: 
+1  - VCC
+2  - GND
+3  - CLK
+4  - PB0
+5  - PB1
+6  - PB2
+7  - PB3
+8  - PB4
+9  - PB5
+10 - PB6
+11 - PB7
+12 - CB1
+13 - CB2
+
+UTIL:
+1 - VCC
+2 - NMIB*
+3 - IRQ*
+4 - RES*
+

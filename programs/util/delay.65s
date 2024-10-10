@@ -48,3 +48,19 @@ DELAY_10ms:
     JMP .DELAY_10ms_loop
 .DELAY_10ms_end:
     RTS
+    
+; -------------------------------------------------------------------------------------------------------
+
+; Wait for (number inside A register * 100) milliseconds
+DELAY_100ms:
+    CMP #0                  ; Make a comparison
+.DELAY_100ms_loop:
+    BEQ .DELAY_100ms_end    ; End the loop when 0 is reached
+    PHA                     ; Save the state of A
+    LDA #10
+    JSR DELAY_10ms          ; Wait 10*10 = 100 ms
+    PLA                     ; Retrieve A
+    DEA                     ; A--
+    JMP .DELAY_100ms_loop
+.DELAY_100ms_end:
+    RTS

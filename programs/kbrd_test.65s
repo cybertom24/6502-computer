@@ -1,0 +1,41 @@
+; --- KBRD TEST ---
+; This program is used to test the subroutines for the keyboard
+
+    include "./util/libs.65s"
+ 
+message_1:
+    byte "test kbrd:", 0
+
+start:    
+    JSR LCD_init                    ; Initialize the LCD
+    LDA # LCD_DISPLAY | LCD_LED | LCD_CURSOR
+    JSR LCD_setDisplay              ; Control the display option
+
+    LCD_printString message_1       ; Use te macro to print the string
+
+    JSR LCD_home                    ; Set the cursor position to 0,0
+    JSR LCD_moveCursor_UD           ; Move the cursor down
+    
+    JSR KBRD_init                   ; Initialize keyboard
+
+loop:
+    JSR KBRD_readPacket             ; Wait for the next packet (it will be put in A)
+    
+    JSR KBRD_available              ; Check how many packets are there to read    
+    CMP #3                          ; If there are less than 3 packet do not read
+    BMI loop
+
+    TAY                             ; A -> Y
+    .print_loop:
+        JSR KBRD_read                   ; Get the packet ready to be read
+        JSR LCD_print                   ; Print the character
+        LDA #' '
+        JSR LCD_print                   ; Print a space
+
+        DEY                             ; Y--
+        BNE .print_loop                 ; Continue the loop until Y = 0
+
+    JSR LCD_home                    ; Restore cursor position
+    JSR LCD_moveCursor_UD           
+    
+    JMP loop

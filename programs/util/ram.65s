@@ -11,6 +11,13 @@ ZERO_PAGE_end   = $FF
 MEMORY_start = STACK_end + 1
 MEMORY_end   = $3FFF
 
+; This is the zero page. Use it only when necessary. Do not exceed the size
+ org ZERO_PAGE_start
+
+KBRD_status:
+ db 0
+
+
 ; Use this list to allocate memory for various tasks
  org MEMORY_start
 
@@ -45,6 +52,11 @@ KBRD_inputBuffer:       ; Input buffer for the keyboard interface
 KBRD_inputBufferRead:   ; Points which is the next byte to read inside the input buffer
  byte 0
 KBRD_inputBufferWrite:  ; Points which is the next byte to overwrite inside the input buffer
+ byte 0
+KBRD_packet:
+ byte 0
+
+INTR_temp:
  byte 0
 
 ; Other

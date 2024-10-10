@@ -1,0 +1,15 @@
+    include "./util/libs.65s"
+    
+    JMP start
+
+macro ciao
+    LDA 'c'
+    LDA 'i'
+    LDA 'a'
+    LDA 'o'
+endm
+
+start:
+    ciao
+    LDA 0
+    ciao

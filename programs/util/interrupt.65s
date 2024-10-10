@@ -1,0 +1,39 @@
+; --- interrupt.65s ---
+; Used to define the main ISR AND list the various ISR that can be called
+
+; Name | mask       | set by  |  cleared by
+IF_CA2 = %00000001  ; positive edge of CA2 | reading or writing ORA
+IF_CA1 = %00000010  ;
+IF_SR  = %00000100  ;
+IF_CB2 = %00001000
+IF_CB1 = %00010000
+IF_T2  = %00100000
+IF_T1  = %01000000
+IF_IRQ = %10000000
+
+
+
+
+
+; Macros:
+
+ macro INTR_enable
+    CLI
+ endm
+
+ macro INTR_disable
+    SEI
+ endm
+
+; -------------------------------------------------------------------------------------------------------
+
+INTR_init:
+    INTR_enable
+    STZ INTR_temp
+    RTS
+
+; -------------------------------------------------------------------------------------------------------
+
+ISR:
+    INC INTR_temp
+    RTI
